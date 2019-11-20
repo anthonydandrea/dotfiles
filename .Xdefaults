@@ -1,0 +1,93 @@
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-dina-bold-r-*-*-10-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #EDEDED
+xscreensaver.Dialog.background:         #202020
+xscreensaver.Dialog.topShadowColor:     #202024
+xscreensaver.Dialog.bottomShadowColor:  #202024
+xscreensaver.Dialog.Button.foreground:  #EDEDFF
+xscreensaver.Dialog.Button.background:  #444
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #EDEDFF
+xscreensaver.Dialog.text.background:    #444
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #A9B7C4
+xscreensaver.passwd.thermometer.background:  #202020
+xscreensaver.passwd.thermometer.width:       8
+!datestamp format--see the strftime(3) manual page for details
+xscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
+
+
+! URxvt ---------------------------------------------------------------------
+
+URxvt.scrollBar: false
+URxvt.internalBorder: 24
+URxvt.fading: 40
+#URxvt.lineSpace: 8
+#URxvt.font: xft:Monospace:size=10
+URxvt.font: 9x15bold,-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
+URxvt.cursorBlink: true
+
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollTtyKeypress: true
+
+
+URxvt*background: #20201d
+URxvt*foreground: #7ea2b4
+
+URxvt.transparent: true
+URxvt.shading: 25
+
+! special
+URxvt.foreground:   #7ea2b4
+URxvt.background:   #161b1d
+URxvt.cursorColor:  #7ea2b4
+
+! black
+URxvt.color0:       #161b1d
+URxvt.color8:       #5a7b8c
+
+! red
+URxvt.color1:       #d22d72
+URxvt.color9:       #d22d72
+
+! green
+URxvt.color2:       #568c3b
+URxvt.color10:      #6ff52c
+
+! yellow
+URxvt.color3:       #f483ff
+URxvt.color11:      #8a8a0f
+
+! blue
+URxvt.color4:       #257fad
+URxvt.color12:      #257fad
+
+! magenta
+URxvt.color5:       #5d5db1
+URxvt.color13:      #5d5db1
+
+! cyan
+URxvt.color6:       #2d8f6f
+URxvt.color14:      #2d8f6f
+
+! white
+URxvt.color7:       #7ea2b4
+URxvt.color15:      #ebf8ff
+
+! :Bind C-0, C-+ and C-= to activate small, medium, and big font size resp.     
+URxvt.keysym.C-0: command:\033]710;-*-dina-medium-r-normal--13-*-*-*-*-*-*-*\007
+URxvt.keysym.C-minus: command:\033]710;-*-dina-medium-r-normal--15-*-*-*-*-*-*-*\007
+URxvt.keysym.C-equal: command:\033]710;-*-dina-medium-r-normal--16-*-*-*-*-*-*-*\007
