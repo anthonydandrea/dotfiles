@@ -133,6 +133,8 @@ export CONFIGS=~/.config
 export EC2_HOST=ubuntu@ec2-3-15-69-235.us-east-2.compute.amazonaws.com
 export ITE_SERVER=aed14008@137.99.3.177
 export HPC_SERVER=aed14008@login.storrs.hpc.uconn.edu
+export GOOGLE_APPLICATION_CREDENTIALS="/home/anthonyd/MetPro34/MetPro34-35b3fe3237f2.json"
+
 
 alias la="ls -a"
 alias edit-i3="vim $CONFIGS/i3/config"
@@ -146,27 +148,45 @@ alias connect-to-network="$SCRIPTS/network/connect_to_network.sh"
 alias audio-settings="blueman-manager & pavucontrol"
 alias all-alias="alias | awk -F'[ =]' '{print ${2}}'"
 alias lock="sudo pm-suspend && i3lock"
-alias ec2="ssh -i ~/CadetsPercussion.com/ec2.pem ubuntu@ec2-3-15-69-235.us-east-2.compute.amazonaws.com"
 alias matlab="~/Matlab/bin/matlab &"
-alias hpc="ssh aed14008@login.storrs.hpc.uconn.edu"
-alias ite-server="ssh aed14008@137.99.3.177"
 alias vscode="code"
 alias rubymine="~/RubyMine*/bin/rubymine.sh"
+alias android-studio="~/android-studio/bin/studio.sh"
 
+alias ec2="ssh -i ~/CadetsPercussion.com/ec2.pem ubuntu@ec2-3-15-69-235.us-east-2.compute.amazonaws.com"
+alias gcloud-ssh-db="gcloud compute ssh --project absolute-bot-264323 --zone us-east4-c  metpro34-db-vm"
+alias hpc="ssh aed14008@login.storrs.hpc.uconn.edu"
+alias ite-server="ssh aed14008@137.99.3.177"
+alias pi="ssh pi@192.168.1.104"
+alias mon2="/home/anthonyd/.scripts/polybar/launch_polybar.sh DP-1"
+alias uconn-vpn="/usr/local/pulse/pulsesvc -h vpn.uconn.edu -u aed14008 -r UConn"
+alias runelite="flatpak run net.runelite.RuneLite/x86_64/stable"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/anaconda2/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/anthonyd/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/anaconda2/etc/profile.d/conda.sh" ]; then
-        . "/home/anaconda2/etc/profile.d/conda.sh"
+    if [ -f "/home/anthonyd/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/anthonyd/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/anaconda2/bin:$PATH"
+        export PATH="/home/anthonyd/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
 source /usr/share/rvm/scripts/rvm
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/anthonyd/google-cloud-sdk/path.bash.inc' ]; then . '/home/anthonyd/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/anthonyd/google-cloud-sdk/completion.bash.inc' ]; then . '/home/anthonyd/google-cloud-sdk/completion.bash.inc'; fi
+
+#export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-11"
+#export PATH=$JAVA_HOME/bin:$PATH
+
+source /etc/profile.d/gradle.sh
+export PATH=/home/anthonyd/Android/Sdk/tools:/home/anthonyd/Android/Sdk/platform-tools:$PATH

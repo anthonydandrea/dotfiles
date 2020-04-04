@@ -38,7 +38,8 @@ exec python3 ~/.scripts/redshift/relative_change.py -r
 exec amixer -D pulse sset Master 50%
 exec ~/.scripts/polybar/launch_polybar.sh
 exec sleep 1s && feh --bg-fill ~/Pictures/Wallpapers/wallpaper.jpg
-exec_always nm-applet
+exec nm-applet
+exec blueman-applet
 exec --no-startup-id ~/.scripts/battery_screen_flash/flash_screen.sh
 #--------------------------------------------------------
 

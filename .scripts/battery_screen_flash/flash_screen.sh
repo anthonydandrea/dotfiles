@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 
-python3 ~/.scripts/redshift/relative_change.py -r
-exit
+# To disable:
+#python3 ~/.scripts/redshift/relative_change.py -r
+#exit
 
 CHARGE_STATE=$(upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep state | awk '{printf $2}')
 BATTERY=$(upower -i $(upower -e | grep BAT) | grep percentage | awk '{print $2}')
