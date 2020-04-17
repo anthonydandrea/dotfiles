@@ -55,13 +55,13 @@ font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
 font-2 = firacode:pixelsize=12;1
 font-3 = FontAwesome:style=Regular:pixelsize=13
 
-modules-left = bspwm i3
+modules-left = i3
 ;modules-center = mpd
 ;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 ;modules-right = date
 ;modules-center = filesystem memory cpu date backlight pulseaudio battery
 modules-center = date
-modules-right = pulseaudio backlight battery
+modules-right = spotify pulseaudio backlight battery
 
 tray-position = right
 tray-padding = 8
@@ -81,6 +81,15 @@ tray-background = #000
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[module/spotify]
+type = custom/script
+interval = 2
+;format-prefix = 
+format = <label>
+exec = python /home/anthonyd/.scripts/polybar-spotify/spotify_status.py -f '{artist}: {song}'
+format-underline = #1db954
+
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
@@ -89,7 +98,7 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
@@ -189,7 +198,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 1
+label-mode-padding = 4
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
@@ -215,7 +224,7 @@ label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
 ; Separator in between workspaces
-; label-separator = |
+;label-separator = |
 
 
 [module/mpd]
@@ -484,7 +493,7 @@ type = internal/date
 interval = 1
 
 ; https://en.cppreference.com/w/cpp/io/manip/put_time
-date = %a %b %e %Y %H:%M:%S
+date = %a %b %e %Y    |    %H:%M:%S
 date-alt = %Y-%m-%d
 
 time =
@@ -607,7 +616,7 @@ time-format = %H:%M
 ;   <animation-charging>
 ;format-charging-prefix = "BAT (CHR):"
 ;format-charging = <animation-charging> <label-charging>
-format-charging =  (CHR): <label-charging> 
+format-charging =  (CHR): <label-charging> <animation-charging>
 format-charging-underline =
 
 ;format-discharging-prefix = "BAT: "
@@ -653,7 +662,7 @@ animation-charging-1 = /
 animation-charging-2 = -
 animation-charging-3 = \
 animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+animation-charging-framerate = 500
 
 animation-discharging-0 = |
 animation-discharging-1 = /

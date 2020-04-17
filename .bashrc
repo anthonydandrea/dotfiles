@@ -190,3 +190,7 @@ if [ -f '/home/anthonyd/google-cloud-sdk/completion.bash.inc' ]; then . '/home/a
 
 source /etc/profile.d/gradle.sh
 export PATH=/home/anthonyd/Android/Sdk/tools:/home/anthonyd/Android/Sdk/platform-tools:$PATH
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+

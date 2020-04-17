@@ -37,6 +37,7 @@ URxvt.fading: 40
 #URxvt.lineSpace: 8
 #URxvt.font: xft:Monospace:size=10
 URxvt.font: 9x15bold,-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso10646-1
+#URxvt.font: xft:terminus:size=20
 URxvt.cursorBlink: true
 
 URxvt*scrollWithBuffer: true
@@ -47,8 +48,9 @@ URxvt*scrollTtyKeypress: true
 URxvt*background: #20201d
 URxvt*foreground: #7ea2b4
 
-URxvt.transparent: true
-URxvt.shading: 25
+URxvt*.transparent: true
+URxvt*.shading: 40
+URxvt*.blurRadius: 7
 
 ! special
 URxvt.foreground:   #7ea2b4

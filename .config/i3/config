@@ -33,7 +33,7 @@ new_window pixel 3
 # On Startup
 
 exec_always ~/.scripts/screenlayout/arandr_layout.sh
-exec ~/.scripts/resolution/set_resolution.sh ":)"
+#exec ~/.scripts/resolution/set_resolution.sh ":)"
 exec python3 ~/.scripts/redshift/relative_change.py -r
 exec amixer -D pulse sset Master 50%
 exec ~/.scripts/polybar/launch_polybar.sh
@@ -80,13 +80,13 @@ bindsym $mod+p exec kazam
 #bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 #bindsym $mod+XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
-bindsym $mod+XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 20%     amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 20%+
-bindsym XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 5%            amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 5%+
-bindsym $mod+XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 20%          amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 20%-
-bindsym XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 5%           amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 5%-
-bindsym XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute             amixer -D pulse set Master 1+ toggle
-bindsym $mod+XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute                 amixer -D pulse set Master 1+ toggle
 
+bindsym $mod+XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 20% 
+bindsym XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 5% 
+bindsym $mod+XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 20% 
+bindsym XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 5%  
+bindsym XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute  
+bindsym $mod+XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute 
 
 
 ### Display controls
