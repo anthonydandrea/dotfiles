@@ -14,6 +14,9 @@ def write_volume(vol):
     with open('volume.json', 'w') as outfile:
         json.dump({"volume": vol}, outfile)
 
+def get_api_secret():
+     with open('secret.txt') as f:
+        return f.readline()
 
 def main():
     if not len(sys.argv) == 2 or sys.argv[1] not in ('+', '-'):
@@ -26,7 +29,7 @@ def main():
         volume = max(0, volume-10)
 
     write_volume(volume)
-    os.system('curl -X "PUT" "https://api.spotify.com/v1/me/player/volume?volume_percent={}" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQDbYTwNkfenfJwn5mQemAlQOZMZXP7b-j_oESefMX1gchB2HFNl3pHPioFGUElHLy7xHVzlF6gLR5LsQ5Dby0xinoLtJypoODfwBjT3mxmp2Y6IxzruspOHJAeG8ufVEFAaqiiBI1LSceNVp5vVoa2m0Js"'.format(volume))
+    os.system('curl -X "PUT" "https://api.spotify.com/v1/me/player/volume?volume_percent={}" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer {}"'.format(volume, get_api_secret()))
 
 
 if __name__ == '__main__':
