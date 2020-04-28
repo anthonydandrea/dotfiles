@@ -150,7 +150,7 @@ alias all-alias="alias | awk -F'[ =]' '{print ${2}}'"
 alias lock="sudo pm-suspend && i3lock"
 alias matlab="~/Matlab/bin/matlab &"
 alias vscode="code"
-alias rubymine="~/RubyMine*/bin/rubymine.sh"
+alias rubymine="/bin/RubyMine*/bin/rubymine.sh"
 alias android-studio="~/android-studio/bin/studio.sh"
 
 alias ec2="ssh -i ~/CadetsPercussion.com/ec2.pem ubuntu@ec2-3-15-69-235.us-east-2.compute.amazonaws.com"
@@ -161,6 +161,7 @@ alias pi="ssh pi@192.168.1.104"
 alias mon2="/home/anthonyd/.scripts/polybar/launch_polybar.sh DP-1"
 alias uconn-vpn="/usr/local/pulse/pulsesvc -h vpn.uconn.edu -u aed14008 -r UConn"
 alias runelite="flatpak run net.runelite.RuneLite/x86_64/stable"
+alias gcloud="/usr/bin/gcloud"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -179,12 +180,6 @@ unset __conda_setup
 
 source /usr/share/rvm/scripts/rvm
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/anthonyd/google-cloud-sdk/path.bash.inc' ]; then . '/home/anthonyd/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/anthonyd/google-cloud-sdk/completion.bash.inc' ]; then . '/home/anthonyd/google-cloud-sdk/completion.bash.inc'; fi
-
 #export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-11"
 #export PATH=$JAVA_HOME/bin:$PATH
 
@@ -193,4 +188,6 @@ export PATH=/home/anthonyd/Android/Sdk/tools:/home/anthonyd/Android/Sdk/platform
 
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PERSONAL_ACCESS_TOKEN=d3540d63cdb87d783b74fc1de3ef957c16539824fbc36ee58a58130c08096f63
+
 

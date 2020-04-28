@@ -73,20 +73,20 @@ bindsym $mod+p exec kazam
 
 
 ### Audio controls
-#bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 20%+
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 5%+
-#bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 20%-
-#bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 1+ unmute & amixer sset 'Master' 5%-
-#bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-#bindsym $mod+XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-
-
+bindsym Mod4+XF86AudioRaiseVolume exec python3 ~/.scripts/spotify/adjust_spotify_volume.py + 
 bindsym $mod+XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 20% 
 bindsym XF86AudioRaiseVolume exec ~/.scripts/volume/set_volume.sh + 5% 
+
+bindsym Mod4+XF86AudioLowerVolume exec python3 ~/.scripts/spotify/adjust_spotify_volume.py -
 bindsym $mod+XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 20% 
 bindsym XF86AudioLowerVolume exec ~/.scripts/volume/set_volume.sh - 5%  
 bindsym XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute  
 bindsym $mod+XF86AudioMute exec ~/.scripts/volume/set_volume.sh toggle-mute 
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 
 
 ### Display controls
