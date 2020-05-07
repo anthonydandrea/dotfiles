@@ -162,6 +162,7 @@ alias mon2="/home/anthonyd/.scripts/polybar/launch_polybar.sh DP-1"
 alias uconn-vpn="/usr/local/pulse/pulsesvc -h vpn.uconn.edu -u aed14008 -r UConn"
 alias runelite="flatpak run net.runelite.RuneLite/x86_64/stable"
 alias gcloud="/usr/bin/gcloud"
+alias fix-dummy-output-audio="pulseaudio -k && sudo alsa force-reload"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
