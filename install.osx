@@ -1,5 +1,14 @@
 !/usr/bin/bash
 
 # install nvim
+pushd /usr/local 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
 tar xzf nvim-macos.tar.gz
+ln -s /usr/local/nvim-osx64/bin/nvim /usr/local/bin/nvim
+popd
+
+# install tmux
+brew install tmux
+
+# Manual installs
+echo 'Download iTerm2 here: https://iterm2.com/downloads.html'
