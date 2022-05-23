@@ -11,6 +11,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# Tmux aliases
+alias tmuxk='tmux kill-session -t'
+alias tmuxn='tmux new -s'
+
 alias python='python3'
 alias restart-audio="sudo pkill coreaudiod"
 alias save-dots='pushd ~/Repos/dotfiles/ && git add . && git commit -m "updates" && git push && popd'
