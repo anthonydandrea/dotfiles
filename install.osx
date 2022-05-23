@@ -30,3 +30,4 @@ echo 'Execute these for nvim: \
     set runtimepath^=~/.vim runtimepath+=~/.vim/after\
     let &packpath = &runtimepath\
     source ~/.vimrc'
+echo 'Login with new Personal Access Token for Github: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token'
