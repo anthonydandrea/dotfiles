@@ -1,4 +1,5 @@
 set ts=4 sw=4
+set mouse=a
 
 inoremap jj <ESC>
 
