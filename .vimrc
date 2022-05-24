@@ -11,6 +11,12 @@ nmap <silent> cp "_cw<C-R>"<Esc>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin()
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
@@ -25,6 +31,10 @@ call plug#begin()
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " Any valid git URL is allowed
 
+" Fuzzy finding
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Theme
 Plug 'franbach/miramare'
 
@@ -33,6 +43,7 @@ Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 " Initialize plugin system
 call plug#end()
@@ -103,9 +114,37 @@ hi rustRepeat guibg=bg guifg=#ff8080
 hi rustTypedef guibg=bg guifg=#ff8080
 
 hi rustModPathSep guibg=bg guifg=white
+
 hi rustDerive guibg=bg guifg=#e0abdb
 hi rustAttribute guibg=bg guifg=#e0abdb
 hi rustDeriveTrait guibg=bg guifg=#e0abdb
 hi rustPubScopeCrate guibg=bg guifg=#e0abdb
 
 
+hi typescriptOperator guibg=bg guifg=#ff8080
+hi typescriptAmbientDeclaration guibg=bg guifg=#ff8080
+hi typescriptExceptions guibg=bg guifg=#ff8080
+hi typescriptCastKeyword guibg=bg guifg=#ff8080
+hi typescriptMappedIn guibg=bg guifg=#ff8080
+hi typescriptDOMStyle guibg=bg guifg=#ff8080
+hi typescriptForOperator guibg=bg guifg=#ff8080
+hi typescriptConditional guibg=bg guifg=#ff8080
+hi typescriptConditionalElse guibg=bg guifg=#ff8080
+hi typescriptRepeat guibg=bg guifg=#ff8080
+
+hi typescriptDotNotation guibg=bg guifg=white
+hi typescriptGlobalNumberDot guibg=bg guifg=white
+hi typescriptGlobalStringDot guibg=bg guifg=white
+hi typescriptGlobalArrayDot guibg=bg guifg=white
+hi typescriptGlobalObjectDot guibg=bg guifg=white
+hi typescriptGlobalSymbolDot guibg=bg guifg=white
+hi typescriptGlobalMathDot guibg=bg guifg=white
+hi typescriptGlobalDateDot guibg=bg guifg=white
+hi typescriptGlobalJSONDot guibg=bg guifg=white
+hi typescriptGlobalPromiseDot guibg=bg guifg=white
+hi typescriptGlobalRegExpDot guibg=bg guifg=white
+hi typescriptGlobalURLDot guibg=bg guifg=white
+
+hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
+hi typescriptExport guibg=bg guifg=#e0abdb
+hi typescriptImport guibg=bg guifg=#e0abdb
