@@ -11,6 +11,13 @@ nmap <silent> cp "_cw<C-R>"<Esc>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" ctrlp.vim settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -151,3 +158,5 @@ hi typescriptGlobalURLDot guibg=bg guifg=white
 hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
 hi typescriptExport guibg=bg guifg=#e0abdb
 hi typescriptImport guibg=bg guifg=#e0abdb
+
+hi jsonQuote guifg=lightgrey
