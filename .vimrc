@@ -92,6 +92,9 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 " Initialize plugin system
 call plug#end()
 
