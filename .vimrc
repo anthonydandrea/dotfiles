@@ -15,8 +15,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -57,6 +57,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 set relativenumber
+set cursorline
+
 syntax on
 
 " important!!
@@ -107,6 +109,8 @@ Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 set relativenumber
+highlight LineNr guifg=orange
+
 syntax on
 
 " important!!
@@ -117,6 +121,8 @@ let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
 
 colorscheme miramare
+
+hi LineNr guifg=orange
 
 " Highlighting off
 hi rustKeyword guibg=bg guifg=#ff8080
@@ -155,6 +161,8 @@ hi typescriptGlobalJSONDot guibg=bg guifg=white
 hi typescriptGlobalPromiseDot guibg=bg guifg=white
 hi typescriptGlobalRegExpDot guibg=bg guifg=white
 hi typescriptGlobalURLDot guibg=bg guifg=white
+hi typescriptObjectColon guibg=bg guifg=white
+hi typescriptTypeAnnotation guibg=bg guifg=white
 
 hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
 hi typescriptExport guibg=bg guifg=#e0abdb
