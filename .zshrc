@@ -15,6 +15,9 @@ source $ZSH/oh-my-zsh.sh
 alias tmuxk='tmux kill-session -t'
 alias tmuxn='tmux new -s'
 
+# Git aliases
+alias gs='git status'
+
 alias python='python3'
 alias restart-audio="sudo pkill coreaudiod"
 alias sd='pushd ~/Repos/dotfiles/ && git pull && git add . && git commit -m "updates" && git push && popd'

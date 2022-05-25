@@ -56,7 +56,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Initialize plugin system
 call plug#end()
 
-set relativenumber
+set number relativenumber
 set cursorline
 
 syntax on
