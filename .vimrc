@@ -1,8 +1,19 @@
+let mapleader = " "
+map <leader>[ :cnext<CR>
+map <leader>] :cprev<CR>
+map <leader>3 :b#<CR>
+
 set ts=4 sw=4
 set mouse=a
 
 " 
 inoremap jj <ESC>
+inoremap { {}<Esc>ha
+inoremap ( ()<Esc>ha
+inoremap [ []<Esc>ha
+inoremap " ""<Esc>ha
+inoremap ' ''<Esc>ha
+inoremap ` ``<Esc>ha
 
 " cp to overwrite current word with yanked buffer
 nmap <silent> cp "_cw<C-R>"<Esc>
@@ -71,7 +82,7 @@ let g:miramare_disable_italic_comment = 1
 colorscheme miramare
 
 
-
+command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
 
 inoremap jj <ESC>
 
