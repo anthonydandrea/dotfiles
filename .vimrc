@@ -3,17 +3,19 @@ map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
 map <leader>3 :b#<CR>
 
+map <C-n> <C-b>
+
 set ts=4 sw=4
 set mouse=a
 
 " 
 inoremap jj <ESC>
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
+inoremap { {}<Left><Esc>ha
+inoremap ( ()<Left><Esc>ha
+inoremap [ []<Left><Esc>ha
+inoremap " ""<Left><Esc>ha
+inoremap ' ''<Left><Esc>ha
+inoremap ` ``<Left><Esc>ha
 
 " cp to overwrite current word with yanked buffer
 nmap <silent> cp "_cw<C-R>"<Esc>

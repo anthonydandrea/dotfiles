@@ -20,6 +20,9 @@ brew install tmux
 # install Github cli
 brew install gh
 
+# install rustup
+curl https://sh.rustup.rs -sSf | sh
+
 # Manual installs
 echo 'Download iTerm2 here: https://iterm2.com/downloads.html'
 echo 'Execute these for nvim: \
