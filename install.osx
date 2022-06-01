@@ -5,7 +5,8 @@ brew install node
 
 brew install neovim
 mkdir -p ~/.config/nvim
-touch ~/.config/nvim/init.vim
+ln -s ~/Repos/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
+ln -s ~/Repos/dotfiles/.vimrc ~/.vimrc
 
 # install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -25,16 +26,16 @@ curl https://sh.rustup.rs -sSf | sh
 
 # Manual installs
 echo 'Download iTerm2 here: https://iterm2.com/downloads.html'
-echo 'Execute these for nvim: \
-1. To start the transition, create your init.vim (user config) file:\
-\
-    :call mkdir(stdpath('config'), 'p')\
-    :exe 'edit '.stdpath('config').'/init.vim'\
-\
-2. Add these contents to the file:\
-\
-    set runtimepath^=~/.vim runtimepath+=~/.vim/after\
-    let &packpath = &runtimepath\
-    source ~/.vimrc'
+#echo 'Execute these for nvim: \
+#1. To start the transition, create your init.vim (user config) file:\
+#\
+    #:call mkdir(stdpath('config'), 'p')\
+    #:exe 'edit '.stdpath('config').'/init.vim'\
+#\
+#2. Add these contents to the file:\
+#\
+    #set runtimepath^=~/.vim runtimepath+=~/.vim/after\
+    #let &packpath = &runtimepath\
+    #source ~/.vimrc'
 echo 'Login with gh cli: gh auth login'
 echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright'
