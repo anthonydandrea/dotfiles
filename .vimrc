@@ -10,12 +10,12 @@ set mouse=a
 
 " 
 inoremap jj <ESC>
-inoremap { {}<Left><Esc>ha
-inoremap ( ()<Left><Esc>ha
-inoremap [ []<Left><Esc>ha
-inoremap " ""<Left><Esc>ha
-inoremap ' ''<Left><Esc>ha
-inoremap ` ``<Left><Esc>ha
+""inoremap { {}<Left><Esc>ha
+""inoremap ( ()<Left><Esc>ha
+""inoremap [ []<Left><Esc>ha
+""inoremap " ""<Left><Esc>ha
+""inoremap ' ''<Left><Esc>ha
+""inoremap ` ``<Left><Esc>ha
 
 " cp to overwrite current word with yanked buffer
 nmap <silent> cp "_cw<C-R>"<Esc>
@@ -31,13 +31,13 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
 
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+""let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+""if empty(glob(data_dir . '/autoload/plug.vim'))
+  ""silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  ""autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+""endif
 
-call plug#begin()
+"call plug#begin('~/.vim/plugged')
 " The default plugin directory will be as follows:
 "   - Vim (Linux/macOS): '~/.vim/plugged'
 "   - Vim (Windows): '~/vimfiles/plugged'
@@ -52,21 +52,30 @@ call plug#begin()
 " Any valid git URL is allowed
 
 " Fuzzy finding
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
 
 " Theme
-Plug 'franbach/miramare'
+"Plug 'franbach/miramare'
 
 " Syntax highlighting
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
+"Plug 'yuezk/vim-js'
+"Plug 'maxmellon/vim-jsx-pretty'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"Plug 'https://github.com/sharkdp/fd'
 
 " Initialize plugin system
+"call plug#end()
+"
+"
+call plug#begin()
+Plug 'preservim/NERDTree'
+Plug 'vim-airline/vim-airline'
+Plug 'https://github.com/ap/vim-css-color'
 call plug#end()
 
 set number relativenumber
