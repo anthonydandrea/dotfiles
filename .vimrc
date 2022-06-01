@@ -1,3 +1,20 @@
+
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'https://github.com/sharkdp/fd.git'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Theme
+Plug 'franbach/miramare'
+
+" Syntax highlighting
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+call plug#end()
+
 let mapleader = " "
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
@@ -30,54 +47,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
-
-""let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-""if empty(glob(data_dir . '/autoload/plug.vim'))
-  ""silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  ""autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-""endif
-
-"call plug#begin('~/.vim/plugged')
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Any valid git URL is allowed
-
-" Fuzzy finding
-"Plug 'nvim-lua/plenary.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
-
-" Theme
-"Plug 'franbach/miramare'
-
-" Syntax highlighting
-"Plug 'yuezk/vim-js'
-"Plug 'maxmellon/vim-jsx-pretty'
-
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-"Plug 'https://github.com/sharkdp/fd'
-
-" Initialize plugin system
-"call plug#end()
-"
-"
-call plug#begin()
-Plug 'preservim/NERDTree'
-Plug 'vim-airline/vim-airline'
-Plug 'https://github.com/ap/vim-css-color'
-call plug#end()
-
 set number relativenumber
 set cursorline
 
@@ -95,42 +64,6 @@ colorscheme miramare
 
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
 
-inoremap jj <ESC>
-
-" Vavigate CoC menu with Tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
-
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Any valid git URL is allowed
-
-" Theme
-Plug 'franbach/miramare'
-
-" Syntax highlighting
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" Initialize plugin system
-call plug#end()
-
-set relativenumber
 highlight LineNr guifg=orange
 
 syntax on
