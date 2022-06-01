@@ -13,6 +13,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 let mapleader = " "
@@ -21,6 +22,9 @@ map <leader>] :cprev<CR>
 map <leader>3 :b#<CR>
 
 map <C-n> <C-b>
+
+map <C-p> :FZF<CR>
+"nnoremap <c-p> :GFiles<cr>
 
 set ts=4 sw=4
 set mouse=a
@@ -63,19 +67,6 @@ colorscheme miramare
 
 
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
-
-highlight LineNr guifg=orange
-
-syntax on
-
-" important!!
-set termguicolors
-
-" the configuration options should be placed before `colorscheme miramare`
-let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-
-colorscheme miramare
 
 hi LineNr guifg=orange
 

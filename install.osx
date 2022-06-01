@@ -37,3 +37,4 @@ echo 'Execute these for nvim: \
     let &packpath = &runtimepath\
     source ~/.vimrc'
 echo 'Login with gh cli: gh auth login'
+echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright'
