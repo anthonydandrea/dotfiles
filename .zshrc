@@ -22,6 +22,7 @@ alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
 alias restart-audio="sudo pkill coreaudiod"
 alias sd='pushd ~/Repos/dotfiles/ && git pull && git add . && git commit -m "updates" && git push && popd'
+alias save-dots='sd'
 alias vim="nvim"
 
 # The next line updates PATH for the Google Cloud SDK.
