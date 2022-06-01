@@ -2,11 +2,8 @@
 
 # install nvim
 brew install node
-pushd /usr/local 
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-tar xzf nvim-macos.tar.gz
-ln -s /usr/local/nvim-osx64/bin/nvim /usr/local/bin/nvim
-popd
+
+brew install neovim
 
 # install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -36,4 +33,4 @@ echo 'Execute these for nvim: \
     set runtimepath^=~/.vim runtimepath+=~/.vim/after\
     let &packpath = &runtimepath\
     source ~/.vimrc'
-echo 'Login with new Personal Access Token for Github: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token'
+echo 'Login with gh cli: gh auth login'
