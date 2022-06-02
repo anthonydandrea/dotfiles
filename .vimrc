@@ -14,6 +14,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 let mapleader = " "
@@ -23,10 +24,9 @@ map <leader>3 :b#<CR>
 
 map <C-n> <C-b>
 
-map <C-p> :FZF<CR>
-"nnoremap <c-p> :GFiles<cr>
+map <C-p> :Files<CR>
 
-set ts=4 sw=4
+set ts=4 sw=4 expandtab
 set mouse=a
 
 " 

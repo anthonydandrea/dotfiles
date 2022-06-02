@@ -6,7 +6,9 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="awesomepanda"
 DISABLE_UPDATE_PROMPT="true"
-FZF_DEFAULT_COMMAND='rg --files'
+
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 plugins=(git)
 
