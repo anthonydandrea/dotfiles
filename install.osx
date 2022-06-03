@@ -18,6 +18,9 @@ brew install ripgrep
 # install tmux
 brew install tmux
 
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # install Github cli
 b:exe 'edit '.stdpath('config').'/init.vim'rew install gh
 
