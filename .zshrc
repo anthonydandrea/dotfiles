@@ -9,9 +9,10 @@ DISABLE_UPDATE_PROMPT="true"
 
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export EDITOR='nvim'
 #command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-plugins=(git)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
@@ -21,6 +22,7 @@ alias tmuxn='tmux new -s'
 
 # Git aliases
 alias gs='git status'
+alias gb='git branch | fzf | xargs git checkout'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
@@ -37,3 +39,5 @@ if [ -f '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 export CLOUDSDK_PYTHON=/usr/bin/python 
 
 clear
+source ~/.bashrc
+source ~/.zshrc.aws
