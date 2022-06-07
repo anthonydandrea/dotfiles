@@ -12,7 +12,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR='nvim'
 #command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-plugins=()
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -23,6 +23,7 @@ alias tmuxn='tmux new -s'
 # Git aliases
 alias gs='git status'
 alias gb='git branch | fzf | xargs git checkout'
+alias gd='git diff'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
