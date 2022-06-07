@@ -29,7 +29,6 @@ map <C-p> :Files<CR>
 set ts=4 sw=4 expandtab
 set mouse=a
 
-" 
 inoremap jj <ESC>
 ""inoremap { {}<Left><Esc>ha
 ""inoremap ( ()<Left><Esc>ha
@@ -59,6 +58,13 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set number relativenumber
 set cursorline
 
@@ -72,7 +78,6 @@ let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
 
 colorscheme miramare
-
 
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
 
