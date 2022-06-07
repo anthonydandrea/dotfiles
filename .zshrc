@@ -16,6 +16,22 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+NEWLINE=$'\n'
+ 
+function prompt_my_midway() {
+    if [[ ! -f ~/.midway/cookie ]] || (( $(grep "^#HttpOnly_midway-auth.amazon.com" ~/.midway/cookie | awk '{print $5}') < $(date +%s) ))
+      then
+          echo "%{$fg[red]%}Missing mwinit authentication"
+      else
+          echo "%{$fg[green]%}mwinit authenticated"
+      fi
+  }
+
+ 
+ PROMPT='
+ $(prompt_my_midway)
+ ${ret_status}%{$fg_bold[green]%} %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$(svn_prompt_info)%{$reset_color%}$ '
+
 # Tmux aliases
 alias tmuxk='tmux kill-session -t'
 alias tmuxn='tmux new -s'
@@ -24,6 +40,7 @@ alias tmuxn='tmux new -s'
 alias gs='git status'
 alias gb='git branch | fzf | xargs git checkout'
 alias gd='git diff'
+alias gca='git commit --amend'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
