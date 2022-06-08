@@ -88,9 +88,7 @@ hi rustKeyword guibg=bg guifg=#ff8080
 hi rustConditional guibg=bg guifg=#ff8080
 hi rustRepeat guibg=bg guifg=#ff8080
 hi rustTypedef guibg=bg guifg=#ff8080
-
 hi rustModPathSep guibg=bg guifg=white
-
 hi rustDerive guibg=bg guifg=#e0abdb
 hi rustAttribute guibg=bg guifg=#e0abdb
 hi rustDeriveTrait guibg=bg guifg=#e0abdb
@@ -107,7 +105,6 @@ hi typescriptForOperator guibg=bg guifg=#ff8080
 hi typescriptConditional guibg=bg guifg=#ff8080
 hi typescriptConditionalElse guibg=bg guifg=#ff8080
 hi typescriptRepeat guibg=bg guifg=#ff8080
-
 hi typescriptDotNotation guibg=bg guifg=white
 hi typescriptGlobalNumberDot guibg=bg guifg=white
 hi typescriptGlobalStringDot guibg=bg guifg=white
@@ -122,9 +119,15 @@ hi typescriptGlobalRegExpDot guibg=bg guifg=white
 hi typescriptGlobalURLDot guibg=bg guifg=white
 hi typescriptObjectColon guibg=bg guifg=white
 hi typescriptTypeAnnotation guibg=bg guifg=white
-
 hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
 hi typescriptExport guibg=bg guifg=#e0abdb
 hi typescriptImport guibg=bg guifg=#e0abdb
 
+
+
 hi jsonQuote guifg=lightgrey
+
+
+hi javaClassDecl guibg=none guifg=pink
+hi javaExternal guibg=none guifg=cyan
+hi javaExceptions guibg=none guifg=orange
