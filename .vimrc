@@ -132,3 +132,4 @@ hi javaClassDecl guibg=none guifg=pink
 hi javaExternal guibg=none guifg=cyan
 hi javaExceptions guibg=none guifg=orange
 hi javaStatement guibg=none guifg=pink
+hi javaMethodDecl guibg=none guifg=brown
