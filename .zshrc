@@ -40,6 +40,7 @@ alias tmuxn='tmux new -s'
 alias gs='git status'
 alias gb='git branch | fzf | xargs git checkout'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gca='git commit --amend'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
