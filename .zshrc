@@ -21,7 +21,6 @@ NEWLINE=$'\n'
 function prompt_my_midway() {
     if [ "$(hostname)" = "147ddacf51d4.ant.amazon.com" ]
     then
-        echo ''
         return 0
     fi
 
@@ -64,5 +63,7 @@ if [ -f '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 if [ -f '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc'; fi
 export CLOUDSDK_PYTHON=/usr/bin/python 
 
-if [ -f '~/.zshrc.aws' ]; then . source ~/.zshrc.aws; fi
+if [ -f '/Users/anthdand/.zshrc.aws' ]; then
+    source ~/.zshrc.aws
+fi
 clear
