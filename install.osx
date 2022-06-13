@@ -27,7 +27,11 @@ brew install tmux
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install Github cli
-b:exe 'edit '.stdpath('config').'/init.vim'rew install gh
+:exe 'edit '.stdpath('config').'/init.vim'
+
+brew install gh
+
+brew install fzf
 
 # install rustup
 curl https://sh.rustup.rs -sSf | sh
