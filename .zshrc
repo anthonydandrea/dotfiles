@@ -34,6 +34,7 @@ function prompt_my_midway() {
 
 # Tmux aliases
 alias tmuxk='tmux kill-session -t'
+alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
 
 # Git aliases

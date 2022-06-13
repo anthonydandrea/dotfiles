@@ -123,10 +123,7 @@ hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
 hi typescriptExport guibg=bg guifg=#e0abdb
 hi typescriptImport guibg=bg guifg=#e0abdb
 
-
-
 hi jsonQuote guifg=lightgrey
-
 
 hi javaClassDecl guibg=none guifg=pink
 hi javaExternal guibg=none guifg=cyan
