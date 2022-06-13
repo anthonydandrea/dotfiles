@@ -63,7 +63,7 @@ if [ -f '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 if [ -f '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc'; fi
 export CLOUDSDK_PYTHON=/usr/bin/python 
 
-if [ -f '/Users/anthdand/.zshrc.aws' ]; then
+if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
     source ~/.zshrc.aws
 fi
 clear
