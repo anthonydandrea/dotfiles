@@ -10,6 +10,9 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 " NERDTree 
 Plug 'preservim/nerdtree'
 
+" Smooth scroll
+Plug 'psliwka/vim-smoothie'
+
 " Theme
 Plug 'franbach/miramare'
 
@@ -131,6 +134,9 @@ hi typescriptTypeAnnotation guibg=bg guifg=white
 hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
 hi typescriptExport guibg=bg guifg=#e0abdb
 hi typescriptImport guibg=bg guifg=#e0abdb
+hi typescriptCase guibg=none guifg=orange
+hi typescriptBranch guibg=none guifg=violet
+hi typescriptStatementKeyword guibg=none guifg=#ff8080
 
 hi jsonQuote guifg=lightgrey
 
