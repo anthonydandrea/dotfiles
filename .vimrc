@@ -4,6 +4,12 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Git support
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+
+" NERDTree 
+Plug 'preservim/nerdtree'
+
 " Theme
 Plug 'franbach/miramare'
 
@@ -25,6 +31,8 @@ map <leader>3 :b#<CR>
 map <C-n> <C-b>
 
 map <C-p> :Files<CR>
+
+cnoreabbrev nf saveas %:h/
 
 set ts=4 sw=4 expandtab
 set mouse=a
@@ -52,6 +60,7 @@ function! SynStack()
 endfunc
 map <leader>s :call SynStack()<CR>
 
+nnoremap <leader>t :NERDTreeToggle<CR>
 " ctrlp.vim settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
