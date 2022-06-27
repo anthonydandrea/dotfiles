@@ -34,7 +34,6 @@ function prompt_my_midway() {
 
  
  PROMPT='
- $(prompt_my_midway)
  ${ret_status}%{$fg_bold[green]%} %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$(svn_prompt_info)%{$reset_color%}$ '
 
 # Tmux aliases
@@ -61,7 +60,7 @@ if [ -f '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc'; fi
-export CLOUDSDK_PYTHON=/usr/bin/python 
+export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
 if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
     source ~/.zshrc.aws
