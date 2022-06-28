@@ -30,6 +30,8 @@ let mapleader = " "
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
 map <leader>3 :b#<CR>
+map <leader>n :bn<CR>
+map <leader>b :bp<CR>
 
 map <C-n> <C-b>
 
