@@ -16,26 +16,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-NEWLINE=$'\n'
- 
-function prompt_my_midway() {
-    if [ "$(hostname)" = "147ddacf51d4.ant.amazon.com" ]
-    then
-        return 0
-    fi
-
-    if [[ ! -f ~/.midway/cookie ]] || (( $(grep "^#HttpOnly_midway-auth.amazon.com" ~/.midway/cookie | awk '{print $5}') < $(date +%s) ))
-      then
-          echo "%{$fg[red]%}Missing mwinit authentication"
-      else
-          echo "%{$fg[green]%}mwinit authenticated"
-      fi
-  }
-
- 
- PROMPT='
- ${ret_status}%{$fg_bold[green]%} %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$(svn_prompt_info)%{$reset_color%}$ '
-
 # Tmux aliases
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
