@@ -148,3 +148,4 @@ hi javaExceptions guibg=none guifg=orange
 hi javaStatement guibg=none guifg=pink
 hi javaMethodDecl guibg=none guifg=brown
 hi javaBranch guibg=none guifg=cyan
+hi javaRepeat guibg=none guifg=violet
