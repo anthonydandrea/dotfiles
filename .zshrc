@@ -35,6 +35,8 @@ alias sd='pushd ~/Repos/dotfiles/ && git pull && git add . && git commit -m "upd
 alias save-dots='sd'
 alias vim="nvim"
 
+alias metprodb="mongosh "mongodb+srv://metpro34-db-instance.vignm.mongodb.net/myFirstDatabase" --apiVersion 1 --username metpro34-db-user"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc'; fi
 

@@ -66,6 +66,16 @@ endfunc
 map <leader>s :call SynStack()<CR>
 
 nnoremap <leader>t :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
+" format on save
+autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+
+
 " ctrlp.vim settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -149,3 +159,4 @@ hi javaStatement guibg=none guifg=pink
 hi javaMethodDecl guibg=none guifg=brown
 hi javaBranch guibg=none guifg=cyan
 hi javaRepeat guibg=none guifg=violet
+hi jsDot guifg=white
