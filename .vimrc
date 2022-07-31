@@ -7,6 +7,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Git support
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 
+" Comments
+Plug 'https://tpope.io/vim/commentary.git'
+
 " NERDTree 
 Plug 'preservim/nerdtree'
 
