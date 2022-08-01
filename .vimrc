@@ -4,6 +4,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" surround.vim
+Plug 'https://tpope.io/vim/surround.git'
+
 " Git support
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 
