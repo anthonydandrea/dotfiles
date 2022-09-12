@@ -35,6 +35,8 @@ alias sd='pushd ~/Repos/dotfiles/ && git pull && git add . && git commit -m "upd
 alias pd='pushd ~/Repos/dotfiles/ && git pull && source ~/.zshrc && popd'
 alias save-dots='sd'
 alias vim="nvim"
+#alias here="echo $(whoami)@$(hostname):$(pwd)"
+alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
 
 alias metpro-db="mongosh "mongodb+srv://metpro34-db-instance.vignm.mongodb.net/myFirstDatabase" --apiVersion 1 --username metpro34-db-user"
 alias mp="pushd ~/Repos/MetPro34"
