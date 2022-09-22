@@ -21,6 +21,14 @@ alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
 
+# Docker
+alias dockerrun='docker run -i -t'
+
+function latest_docker_image_id() {
+    echo $(docker images | awk '{print $3}' | awk 'NR==2')
+}
+alias dockerrunlatest='dockerrun $(latest_docker_image_id)'
+
 # Git aliases
 alias gs='git status'
 alias gb='git branch | fzf | xargs git checkout'
@@ -35,6 +43,8 @@ alias sd='pushd ~/Repos/dotfiles/ && git pull && git add . && git commit -m "upd
 alias pd='pushd ~/Repos/dotfiles/ && git pull && source ~/.zshrc && popd'
 alias save-dots='sd'
 alias vim="nvim"
+alias h="history"
+
 #alias here="echo $(whoami)@$(hostname):$(pwd)"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
 
