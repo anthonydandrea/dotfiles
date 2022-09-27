@@ -25,7 +25,6 @@ Plug 'franbach/miramare'
 " Syntax highlighting
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -39,6 +38,13 @@ map <leader>3 :b#<CR>
 map <leader>n :bn<CR>
 map <leader>b :bp<CR>
 
+" leader p to paste from yank buffer
+nnoremap <leader>p "0p
+
+" leader o to insert new line and stay in normal mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
 map <C-n> <C-b>
 
 map <C-p> :Files<CR>
@@ -47,6 +53,7 @@ cnoreabbrev nf saveas %:h/
 
 set ts=4 sw=4 expandtab
 set mouse=a
+set so=999
 
 inoremap jj <ESC>
 ""inoremap { {}<Left><Esc>ha
@@ -155,6 +162,9 @@ hi typescriptImport guibg=bg guifg=#e0abdb
 hi typescriptCase guibg=none guifg=orange
 hi typescriptBranch guibg=none guifg=violet
 hi typescriptStatementKeyword guibg=none guifg=#ff8080
+hi typescriptClassKeyword guibg=none guifg=lightblue
+hi typescriptClassExtends guibg=none guifg=lightgreen
+hi typescriptArrowFuncArg guibg=none guifg=lightred
 
 hi jsonQuote guifg=lightgrey
 
