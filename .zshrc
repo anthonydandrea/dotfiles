@@ -44,6 +44,7 @@ alias pd='pushd ~/Repos/dotfiles/ && git pull && source ~/.zshrc && popd'
 alias save-dots='sd'
 alias vim="nvim"
 alias h="history"
+alias s="source ~/.zshrc && source ~/.zshrc.aws &> /dev/null || true"
 
 #alias here="echo $(whoami)@$(hostname):$(pwd)"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"

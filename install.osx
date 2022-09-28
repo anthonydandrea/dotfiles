@@ -6,9 +6,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # install nvim
 brew install node
-
 brew install git
-
+brew install python3
 brew install neovim
 mkdir -p ~/.config/nvim
 ln -s ~/Repos/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
@@ -35,8 +34,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 :exe 'edit '.stdpath('config').'/init.vim'
 
 brew install gh
-
 brew install fzf
+
+# install neovim python module for python plugins
+pip3 install neovim
 
 # install rustup
 curl https://sh.rustup.rs -sSf | sh

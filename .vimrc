@@ -4,6 +4,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" autoread plug to refresh buffers when changed on fs in background
+Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
+
 " surround.vim
 Plug 'https://tpope.io/vim/surround.git'
 
@@ -54,6 +57,12 @@ cnoreabbrev nf saveas %:h/
 set ts=4 sw=4 expandtab
 set mouse=a
 set so=999
+
+"Autoreload files when changed externally
+set autoread
+if has('nvim') "Prevent errors when using standard vim
+    autocmd VimEnter * AutoreadLoop
+endif
 
 inoremap jj <ESC>
 ""inoremap { {}<Left><Esc>ha
