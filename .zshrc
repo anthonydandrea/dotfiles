@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.cargo/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -14,6 +14,9 @@ export EDITOR='nvim'
 
 plugins=(git)
 
+
+# Disable auto update of oh-my-zsh
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 # Tmux aliases
