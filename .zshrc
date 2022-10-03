@@ -67,3 +67,4 @@ if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; th
     source ~/.zshrc.aws
 fi
 clear
+
