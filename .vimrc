@@ -4,6 +4,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" autoformatting
+"Plug 'mhartington/formatter.nvim'
+
 " autoread plug to refresh buffers when changed on fs in background
 Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
 
@@ -174,6 +177,9 @@ hi typescriptStatementKeyword guibg=none guifg=#ff8080
 hi typescriptClassKeyword guibg=none guifg=lightblue
 hi typescriptClassExtends guibg=none guifg=lightgreen
 hi typescriptArrowFuncArg guibg=none guifg=lightred
+hi typescriptAliasKeyword guibg=none guifg=orange
+hi typescriptInterfaceKeyword guibg=none guifg=silver
+hi typescriptInterfaceExtends guibg=none guifg=yellow
 
 hi jsonQuote guifg=lightgrey
 
@@ -186,4 +192,7 @@ hi javaBranch guibg=none guifg=cyan
 hi javaRepeat guibg=none guifg=violet
 hi jsDot guifg=white
 
+<<<<<<< Updated upstream
 hi shComment guifg=#dddddd
+=======
+>>>>>>> Stashed changes
