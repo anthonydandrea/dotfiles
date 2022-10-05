@@ -192,7 +192,4 @@ hi javaBranch guibg=none guifg=cyan
 hi javaRepeat guibg=none guifg=violet
 hi jsDot guifg=white
 
-<<<<<<< Updated upstream
 hi shComment guifg=#dddddd
-=======
->>>>>>> Stashed changes
