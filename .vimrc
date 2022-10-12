@@ -185,7 +185,6 @@ hi typescriptInterfaceKeyword guibg=none guifg=silver
 hi typescriptInterfaceExtends guibg=none guifg=yellow
 
 hi jsonQuote guifg=lightgrey
-
 hi javaClassDecl guibg=none guifg=pink
 hi javaExternal guibg=none guifg=cyan
 hi javaExceptions guibg=none guifg=orange
@@ -196,3 +195,5 @@ hi javaRepeat guibg=none guifg=violet
 hi jsDot guifg=white
 
 hi shComment guifg=#dddddd
+hi javaTypedef guifg=cyan
+hi javaType guifg=#91d0e3
