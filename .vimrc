@@ -47,6 +47,9 @@ map <leader>b :bp<CR>
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
 
+" leader-w to :w 
+nnoremap <leader>w :w<CR>
+
 " leader o to insert new line and stay in normal mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
