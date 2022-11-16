@@ -14,6 +14,7 @@ ln -s ~/Repos/dotfiles/.config/nvim/init.vim ~/.config/nvim/init.vim
 ln -s ~/Repos/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Repos/dotfiles/.gitignore ~/.gitignore
 ln -s ~/Repos/dotfiles/.tmux.confg ~/.tmux.conf
+ln -s ~/Repos/dotfiles/.tmux ~/.tmux
 
 git config --global core.excludesFile '~/.gitignore'
 
