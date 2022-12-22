@@ -58,7 +58,7 @@ function load_average() {
 
 function date_time() {
 
-    printf "%s" "$(date +'%Y-%m-%d %H:%M:%S %Z')"
+    printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
 
 }
 
