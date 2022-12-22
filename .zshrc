@@ -25,6 +25,7 @@ source $ZSH/oh-my-zsh.sh
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
+alias tmuxa='tmux attach-session'
 
 # Docker
 alias dockerrun='docker run -i -t'
