@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.cargo/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.cargo/bin:/lib
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
 
 ZSH_THEME="awesomepanda"
 DISABLE_UPDATE_PROMPT="true"
@@ -10,6 +11,7 @@ DISABLE_UPDATE_PROMPT="true"
 export FZF_DEFAULT_COMMAND="rg --files"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR='nvim'
+# export TERM=tmux-256color
 #command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 plugins=(git)
@@ -38,6 +40,7 @@ alias gb='git branch | fzf | xargs git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gca='git commit --amend'
+alias gp='git pull'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
@@ -67,4 +70,7 @@ if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; th
     source ~/.zshrc.aws
 fi
 clear
+
+
+export AWS_EC2_METADATA_DISABLED=true
 

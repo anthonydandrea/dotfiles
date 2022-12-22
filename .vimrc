@@ -4,6 +4,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Cursor search highlight
+Plug 'https://github.com/PeterRincker/vim-searchlight.git'
+
 " autoformatting
 "Plug 'mhartington/formatter.nvim'
 
@@ -116,6 +119,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 set number relativenumber
 set cursorline
