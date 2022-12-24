@@ -8,7 +8,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 
 " autoformatting
-"Plug 'mhartington/formatter.nvim'
+Plug 'vim-autoformat/vim-autoformat'
+
 
 " autoread plug to refresh buffers when changed on fs in background
 Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
@@ -39,7 +40,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
-
+:q
+:q!
 let mapleader = " "
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
@@ -57,9 +59,11 @@ nnoremap <leader>w :w<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+
 map <C-n> <C-b>
 
 map <C-p> :Files<CR>
+map <C-[> :Rg<CR>
 
 cnoreabbrev nf saveas %:h/
 
@@ -72,6 +76,10 @@ set autoread
 if has('nvim') "Prevent errors when using standard vim
     autocmd VimEnter * AutoreadLoop
 endif
+
+" autoformat on save
+au BufWrite * :Autoformat
+
 
 inoremap jj <ESC>
 ""inoremap { {}<Left><Esc>ha
@@ -102,10 +110,6 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
-
-" format on save
-autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-
 
 " ctrlp.vim settings
 let g:ctrlp_map = '<c-p>'
