@@ -14,7 +14,7 @@ export EDITOR='nvim'
 # export TERM=tmux-256color
 #command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-plugins=(git)
+plugins=(git zsh-autosuggestions)
 
 
 # Disable auto update of oh-my-zsh
