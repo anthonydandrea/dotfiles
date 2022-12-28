@@ -10,7 +10,6 @@ Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 " autoformatting
 Plug 'vim-autoformat/vim-autoformat'
 
-
 " autoread plug to refresh buffers when changed on fs in background
 Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
 
@@ -23,7 +22,7 @@ Plug 'https://github.com/airblade/vim-gitgutter.git'
 " Comments
 Plug 'https://tpope.io/vim/commentary.git'
 
-" NERDTree 
+" NERDTree
 Plug 'preservim/nerdtree'
 
 " Smooth scroll
@@ -52,7 +51,7 @@ map <leader>b :bp<CR>
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
 
-" leader-w to :w 
+" leader-w to :w
 nnoremap <leader>w :w<CR>
 
 " leader o to insert new line and stay in normal mode
@@ -97,10 +96,10 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 map <leader>s :call SynStack()<CR>
 
@@ -120,8 +119,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
