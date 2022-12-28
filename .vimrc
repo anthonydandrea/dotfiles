@@ -40,8 +40,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
-:q
-:q!
+
+
 let mapleader = " "
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>

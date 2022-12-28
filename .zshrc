@@ -75,3 +75,7 @@ clear
 
 export AWS_EC2_METADATA_DISABLED=true
 
+# Don't share shell history in different tmux panes
+setopt noincappendhistory
+setopt nosharehistory
+
