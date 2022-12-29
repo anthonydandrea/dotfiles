@@ -50,6 +50,8 @@ alias sd='pushd ~/Repos/dotfiles/ && git stash && git pull && git stash pop && g
 alias pd='pushd ~/Repos/dotfiles/ && git pull && source ~/.zshrc && popd'
 alias save-dots='sd'
 alias vim="nvim"
+# "vim open"
+alias vo="nvim ."
 alias h="history"
 alias s="source ~/.zshrc && source ~/.zshrc.aws &> /dev/null || true"
 

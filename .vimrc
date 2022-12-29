@@ -40,7 +40,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 
-
 let mapleader = " "
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
