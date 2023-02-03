@@ -76,7 +76,7 @@ if has('nvim') "Prevent errors when using standard vim
 endif
 
 " autoformat on save
-au BufWrite * :Autoformat
+au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
 
 
 inoremap jj <ESC>
