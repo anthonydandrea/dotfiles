@@ -7,6 +7,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Cursor search highlight
 Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 
+" Copilot
+Plug 'https://github.com/github/copilot.vim'
+
 " autoformatting
 Plug 'vim-autoformat/vim-autoformat'
 
@@ -39,6 +42,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
+
+autocmd VimEnter * Copilot enable
 
 let mapleader = " "
 map <leader>[ :cnext<CR>
@@ -76,7 +81,7 @@ if has('nvim') "Prevent errors when using standard vim
 endif
 
 " autoformat on save
-au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+" au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
 
 
 inoremap jj <ESC>
@@ -125,7 +130,10 @@ endif
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 set number relativenumber
+" inoremap 
 set cursorline
+" # set norelativenumber
+" # set nonu
 
 syntax on
 

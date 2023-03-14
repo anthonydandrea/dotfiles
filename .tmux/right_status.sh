@@ -57,9 +57,8 @@ function load_average() {
 }
 
 function date_time() {
-
-    printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
-
+    # For daylight savings (after Spring and before Fall), add 1 hour
+    printf "%s" "$(TZ="EST" date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')"
 }
 
 function main() {

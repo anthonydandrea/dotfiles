@@ -38,7 +38,7 @@ alias dockerrunlatest='dockerrun $(latest_docker_image_id)'
 # Git aliases
 alias gs='git status'
 alias gb='git branch | fzf | xargs git checkout'
-alias gd='git diff'
+alias gd="git diff -- . ':(exclude)package-lock.json'"
 alias gds='git diff --staged'
 alias gca='git commit --amend'
 alias gp='git pull'
