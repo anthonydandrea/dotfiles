@@ -54,6 +54,7 @@ alias vim="nvim"
 alias vo="nvim ."
 alias h="history"
 alias s="source ~/.zshrc && source ~/.zshrc.aws &> /dev/null || true"
+alias server="python3 -m http.server"
 
 #alias here="echo $(whoami)@$(hostname):$(pwd)"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"

@@ -62,3 +62,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 #source ~/.vimrc'
        echo 'Login with gh cli: gh auth login'
        echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright'
+
+
+# Run :Copilot setup in nvim to link account
