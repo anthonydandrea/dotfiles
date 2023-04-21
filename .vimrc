@@ -4,6 +4,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Tabs
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+
 " Cursor search highlight
 Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 
@@ -68,6 +72,9 @@ map <C-n> <C-b>
 map <C-p> :Files<CR>
 map <C-[> :Rg<CR>
 
+map <C-h> :BufferPrevious<CR>
+map <C-l> :BufferNext<CR>
+
 cnoreabbrev nf saveas %:h/
 
 set ts=4 sw=4 expandtab
@@ -85,6 +92,7 @@ endif
 
 
 inoremap jj <ESC>
+inoremap <leader>y "+y
 ""inoremap { {}<Left><Esc>ha
 ""inoremap ( ()<Left><Esc>ha
 ""inoremap [ []<Left><Esc>ha
