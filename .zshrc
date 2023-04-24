@@ -62,13 +62,15 @@ alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
 alias metpro-db="mongosh "mongodb+srv://metpro34-db-instance.vignm.mongodb.net/myFirstDatabase" --apiVersion 1 --username metpro34-db-user"
 alias mp="pushd ~/Repos/MetPro34"
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anthonydandrea/google-cloud-sdk/completion.zsh.inc'; fi
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
+
+export SPARK_HOME=/opt/spark
+export PATH=$SPARK_HOME/bin:$PATH
+
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+export JAVA_HOME=/usr/local/opt/openjdk@20/libexec/openjdk.jdk/Contents/Home
+
 
 if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
     source ~/.zshrc.aws
@@ -81,4 +83,26 @@ export AWS_EC2_METADATA_DISABLED=true
 # Don't share shell history in different tmux panes
 setopt noincappendhistory
 setopt nosharehistory
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/anthonydandrea/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/anthonydandrea/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/anthonydandrea/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/anthonydandrea/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/anthonydandrea/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/anthonydandrea/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

@@ -45,9 +45,24 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
-autocmd VimEnter * Copilot enable
+" Tabs for buffers
+map T <Cmd>BufferPrevious<CR>
+map t <Cmd>BufferNext<CR>
+map <leader>q <Cmd>BufferClose<CR>
+
+autocmd VimEnter * Copilot disable
 
 let mapleader = " "
 map <leader>[ :cnext<CR>
@@ -55,6 +70,9 @@ map <leader>] :cprev<CR>
 map <leader>3 :b#<CR>
 map <leader>n :bn<CR>
 map <leader>b :bp<CR>
+
+" iTerm sends ctrl-c to copy, this copies to clipboard
+vnoremap <M-c> "+y
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
@@ -65,6 +83,23 @@ nnoremap <leader>w :w<CR>
 " leader o to insert new line and stay in normal mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+    if CocAction('hasProvider', 'hover')
+        call CocActionAsync('doHover')
+    else
+        call feedkeys('K', 'in')
+    endif
+endfunction
 
 
 map <C-n> <C-b>
@@ -88,7 +123,7 @@ set autoread
 " endif
 
 " autoformat on save
-" au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
 
 
 inoremap jj <ESC>
@@ -138,7 +173,7 @@ endif
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 set number relativenumber
-" inoremap 
+" inoremap
 set cursorline
 " # set norelativenumber
 " # set nonu
