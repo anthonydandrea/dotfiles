@@ -86,8 +86,8 @@ map <C-p> :Files<CR>
 map <C-h> :BufferPrevious<CR>
 map <C-l> :BufferNext<CR>
 
-" iTerm sends ctrl-c to copy, this copies to clipboard
-map <M-c> "+y
+" copy to system clipboard
+map <leader>y "+y
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
