@@ -1,4 +1,3 @@
-
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
@@ -57,22 +56,38 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 call plug#end()
 
-" Tabs for buffers
-map T <Cmd>BufferPrevious<CR>
-map t <Cmd>BufferNext<CR>
-map <leader>q <Cmd>BufferClose<CR>
-
-autocmd VimEnter * Copilot disable
-
+""" Let
 let mapleader = " "
+" ctrlp.vim settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+
+let NERDTreeShowHidden=1
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+"
+" the configuration options should be placed before `colorscheme miramare`
+let g:miramare_enable_italic = 1
+let g:miramare_disable_italic_comment = 1
+
+""" Map
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
 map <leader>3 :b#<CR>
 map <leader>n :bn<CR>
 map <leader>b :bp<CR>
+map <C-n> <C-b>
+map <C-p> :Files<CR>
+" map <C-[> :Rg<CR>
+map <C-h> :BufferPrevious<CR>
+map <C-l> :BufferNext<CR>
 
 " iTerm sends ctrl-c to copy, this copies to clipboard
-vnoremap <M-c> "+y
+map <M-c> "+y
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
@@ -84,6 +99,26 @@ nnoremap <leader>w :w<CR>
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
+inoremap jj <ESC>
+inoremap <leader>y "+y
+""inoremap { {}<Left><Esc>ha
+""inoremap ( ()<Left><Esc>ha
+""inoremap [ []<Left><Esc>ha
+""inoremap " ""<Left><Esc>ha
+""inoremap ' ''<Left><Esc>ha
+""inoremap ` ``<Left><Esc>ha
+
+map <leader>s :call SynStack()<CR>
+
+nnoremap <leader>t :NERDTreeToggle<CR>
+
+" cp to overwrite current word with yanked buffer
+nmap <silent> cp "_cw<C-R>"<Esc>
+
+" Vavigate CoC menu with Tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -92,6 +127,16 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" Tabs for buffers
+map T <Cmd>BufferPrevious<CR>
+map t <Cmd>BufferNext<CR>
+map <leader>q <Cmd>BufferClose<CR>
+
+autocmd VimEnter * Copilot disable
+
 
 function! ShowDocumentation()
     if CocAction('hasProvider', 'hover')
@@ -102,19 +147,13 @@ function! ShowDocumentation()
 endfunction
 
 
-map <C-n> <C-b>
-
-map <C-p> :Files<CR>
-map <C-[> :Rg<CR>
-
-map <C-h> :BufferPrevious<CR>
-map <C-l> :BufferNext<CR>
 
 cnoreabbrev nf saveas %:h/
 
-set ts=4 sw=4 expandtab
-set mouse=a
-set so=999
+
+""" Set
+" Ignore files when searching
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
 
 "Autoreload files when changed externally
 set autoread
@@ -122,74 +161,45 @@ set autoread
 "     autocmd VimEnter * AutoreadLoop
 " endif
 
-" autoformat on save
-au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+" auto-change vim dir to current file dir
+set autochdir
 
+" Formatting
+set ts=4 sw=4 expandtab
+set mouse=a
+set so=999
+set number relativenumber
+set cursorline
+set termguicolors
 
-inoremap jj <ESC>
-inoremap <leader>y "+y
-""inoremap { {}<Left><Esc>ha
-""inoremap ( ()<Left><Esc>ha
-""inoremap [ []<Left><Esc>ha
-""inoremap " ""<Left><Esc>ha
-""inoremap ' ''<Left><Esc>ha
-""inoremap ` ``<Left><Esc>ha
-
-" cp to overwrite current word with yanked buffer
-nmap <silent> cp "_cw<C-R>"<Esc>
-
-" Vavigate CoC menu with Tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
+""" Functions
 function! SynStack()
     if !exists("*synstack")
         return
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-map <leader>s :call SynStack()<CR>
 
-nnoremap <leader>t :NERDTreeToggle<CR>
-let NERDTreeShowHidden=1
-" enable line numbers
-let NERDTreeShowLineNumbers=1
+""" Autocmd
+
+autocmd CursorHold * checktime
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
+" autoformat on save
+autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
 
-" ctrlp.vim settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
-set number relativenumber
-" inoremap
-set cursorline
-" # set norelativenumber
-" # set nonu
-
-syntax on
-
-" important!!
-set termguicolors
-
-" the configuration options should be placed before `colorscheme miramare`
-let g:miramare_enable_italic = 1
-let g:miramare_disable_italic_comment = 1
-
-colorscheme miramare
-
+""" Misc
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
+
+""" Themeing
+syntax on
+colorscheme miramare
 
 hi LineNr guifg=orange
 
