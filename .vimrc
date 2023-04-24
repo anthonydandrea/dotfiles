@@ -177,6 +177,8 @@ set number relativenumber
 set cursorline
 set termguicolors
 
+nmap <leader>n :call ChangeLineNumbering()<CR>
+
 """ Functions
 function! SynStack()
     if !exists("*synstack")
@@ -184,6 +186,17 @@ function! SynStack()
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" Toggle between line numbers and no line numbers
+" https://www.reddit.com/r/neovim/comments/k2bk0o/toggle_linenumbering/
+function! ChangeLineNumbering()
+    if &number == 0 && &relativenumber == 0
+        setlocal number! relativenumber!
+    else
+        setlocal number! relativenumber!
+    endif
+endfunction
+
 
 """ Autocmd
 
@@ -269,3 +282,8 @@ hi jsDot guifg=white
 hi shComment guifg=#dddddd
 hi javaTypedef guifg=cyan
 hi javaType guifg=#91d0e3
+
+hi vimCommand guibg=bg guifg=pink
+hi vimMap guibg=bg guifg=violet
+hi vimFgBgAttrib guibg=bg
+hi vimEnvvar guibg=bgk guifg=gold
