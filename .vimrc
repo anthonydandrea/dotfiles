@@ -17,7 +17,7 @@ Plug 'https://github.com/github/copilot.vim'
 Plug 'vim-autoformat/vim-autoformat'
 
 " autoread plug to refresh buffers when changed on fs in background
-Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
+" Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
 
 " surround.vim
 Plug 'https://tpope.io/vim/surround.git'
@@ -151,18 +151,23 @@ endfunction
 cnoreabbrev nf saveas %:h/
 
 
-""" Set
+""" set
 " Ignore files when searching
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip   " MacOSX/Linux
 
 "Autoreload files when changed externally
-set autoread
+" https://stackoverflow.com/questions/2157914/can-vim-monitor-realtime-changes-to-a-file
+set autoread | au CursorHold * checktime | call feedkeys("lh")
+
 " if has('nvim') "Prevent errors when using standard vim
 "     autocmd VimEnter * AutoreadLoop
 " endif
 
 " auto-change vim dir to current file dir
 set autochdir
+
+" Quicker update for reloading from disk changes
+set updatetime=1000
 
 " Formatting
 set ts=4 sw=4 expandtab
@@ -182,7 +187,6 @@ endfunc
 
 """ Autocmd
 
-autocmd CursorHold * checktime
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
