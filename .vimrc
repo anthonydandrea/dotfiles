@@ -83,9 +83,9 @@ set so=999
 
 "Autoreload files when changed externally
 set autoread
-if has('nvim') "Prevent errors when using standard vim
-    autocmd VimEnter * AutoreadLoop
-endif
+" if has('nvim') "Prevent errors when using standard vim
+"     autocmd VimEnter * AutoreadLoop
+" endif
 
 " autoformat on save
 " au BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
