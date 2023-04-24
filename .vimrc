@@ -186,7 +186,7 @@ autocmd CursorHold * checktime
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
-autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+" autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
