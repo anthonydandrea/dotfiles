@@ -52,6 +52,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
+Plug 'ThePrimeagen/harpoon'
+
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 call plug#end()
@@ -135,7 +137,11 @@ map T <Cmd>BufferPrevious<CR>
 map t <Cmd>BufferNext<CR>
 map <leader>q <Cmd>BufferClose<CR>
 
-autocmd VimEnter * Copilot disable
+map <leader>m <Cmd>lua require("harpoon.mark").add_file()<CR>
+map <leader>f <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
+
+
+autocmd VimEnter * Copilot enable
 
 
 function! ShowDocumentation()
