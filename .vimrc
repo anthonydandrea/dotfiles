@@ -133,8 +133,8 @@ nnoremap <silent> K :call ShowDocumentation()<CR>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Tabs for buffers
-map T <Cmd>BufferPrevious<CR>
-map t <Cmd>BufferNext<CR>
+" map T <Cmd>BufferPrevious<CR>
+" map t <Cmd>BufferNext<CR>
 map <leader>q <Cmd>BufferClose<CR>
 
 map <leader>m <Cmd>lua require("harpoon.mark").add_file()<CR>
