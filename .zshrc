@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="awesomepanda"
 DISABLE_UPDATE_PROMPT="true"
 
-export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_COMMAND="rg --files -i"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR='nvim'
 # export TERM=tmux-256color
