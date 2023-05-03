@@ -76,6 +76,8 @@ let NERDTreeShowLineNumbers=1
 let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
 
+let g:current_directory = getcwd()
+
 """ Map
 map <leader>[ :cnext<CR>
 map <leader>] :cprev<CR>
@@ -84,6 +86,10 @@ map <leader>n :bn<CR>
 map <leader>b :bp<CR>
 map <C-n> <C-b>
 map <C-p> :Files<CR>
+
+command! -bang -nargs=* PRg
+  \ call fzf#vim#grep("rg --files --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': g:current_directory }, <bang>0)
+
 " map <C-[> :Rg<CR>
 map <C-h> :BufferPrevious<CR>
 map <C-l> :BufferNext<CR>
