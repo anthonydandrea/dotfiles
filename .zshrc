@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.cargo/bin:/lib
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.cargo/bin:/lib:/usr/local/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -64,8 +64,8 @@ alias mp="pushd ~/Repos/MetPro34"
 
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
-export SPARK_HOME=/opt/spark
-export PATH=$SPARK_HOME/bin:$PATH
+# export SPARK_HOME=/opt/spark
+# export PATH=$$SPARK_HOME/bin
 
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
@@ -74,6 +74,9 @@ export JAVA_HOME=/usr/local/opt/openjdk@20/libexec/openjdk.jdk/Contents/Home
 
 if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
     source ~/.zshrc.aws
+fi
+if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
+    source ~/.zshrc_secret
 fi
 clear
 
@@ -106,3 +109,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# Added by Amplify CLI binary installer
+export PATH="/usr/local/bin/:$PATH:$HOME/.amplify/bin:/Users/anthonydandrea/Library/Python/3.11/lib/python/site-packages"

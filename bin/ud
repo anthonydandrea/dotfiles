@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Check if a file path is provided as an argument
+if [ $# -eq 0 ]; then
+  echo "Please provide a file path as an argument."
+  exit 1
+fi
+
+# Extract the file name from the provided file path
+file_path=$1
+file_name=$(basename "$file_path")
+
+# Upload the file to S3 bucket
+aws s3 cp "$file_path" s3://$DRIVE_BUCKET_NAME/"$file_name" --quiet
+
+# Generate the URL for the uploaded file
+s3_url="https://drive.anthonydandrea.dev/$file_name"
+
+# Copy the URL to the system clipboard
+echo "$s3_url" | pbcopy
+

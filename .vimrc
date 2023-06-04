@@ -216,6 +216,9 @@ endfunction
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
 " autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+"
+" Run Autoformat on Leader-F
+nnoremap <leader>F :Autoformat<CR>
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
