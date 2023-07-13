@@ -3,6 +3,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'tpope/vim-repeat'
+
 " Tabs
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
@@ -11,7 +13,7 @@ Plug 'romgrk/barbar.nvim'
 Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 
 " Copilot
-Plug 'https://github.com/github/copilot.vim'
+" Plug 'https://github.com/github/copilot.vim'
 
 " autoformatting
 Plug 'vim-autoformat/vim-autoformat'
@@ -69,14 +71,17 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
 let NERDTreeShowHidden=1
-" enable line numbers
 let NERDTreeShowLineNumbers=1
+let g:NERDTreeWinSize=80
+
+
+
 "
 " the configuration options should be placed before `colorscheme miramare`
 let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
 
-let g:current_directory = getcwd()
+" let g:current_directory = getcwd()
 
 """ Map
 map <leader>[ :cnext<CR>
@@ -95,7 +100,7 @@ map <C-h> :BufferPrevious<CR>
 map <C-l> :BufferNext<CR>
 
 " copy to system clipboard
-map <leader>y "+y
+" map <leader>y "+y
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
@@ -108,7 +113,7 @@ nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
 inoremap jj <ESC>
-inoremap <leader>y "+y
+" inoremap <leader>y "+y
 ""inoremap { {}<Left><Esc>ha
 ""inoremap ( ()<Left><Esc>ha
 ""inoremap [ []<Left><Esc>ha
@@ -147,7 +152,7 @@ map <leader>m <Cmd>lua require("harpoon.mark").add_file()<CR>
 map <leader>f <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 
-autocmd VimEnter * Copilot enable
+" autocmd VimEnter * Copilot enable
 
 
 function! ShowDocumentation()
@@ -176,7 +181,7 @@ set autoread | au CursorHold * checktime | call feedkeys("lh")
 " endif
 
 " auto-change vim dir to current file dir
-set autochdir
+" set autochdir
 
 " Quicker update for reloading from disk changes
 set updatetime=1000
@@ -216,7 +221,7 @@ endfunction
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
 " autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
-"
+
 " Run Autoformat on Leader-F
 nnoremap <leader>F :Autoformat<CR>
 
@@ -225,6 +230,8 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 """ Misc
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`

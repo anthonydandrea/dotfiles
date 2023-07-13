@@ -4,6 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.local/bin/flutter/bin:$HOME/.c
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+export HISTCONTROL=ignoreboth:erasedups
 
 ZSH_THEME="awesomepanda"
 DISABLE_UPDATE_PROMPT="true"
@@ -25,7 +26,8 @@ source $ZSH/oh-my-zsh.sh
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
-alias tmuxa='tmux attach-session'
+alias tmuxa='tmux attach-session -t'
+alias tmuxd='tmux detach'
 
 # Docker
 alias dockerrun='docker run -i -t'

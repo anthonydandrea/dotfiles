@@ -69,7 +69,7 @@ brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-fon
 #let &packpath = &runtimepath\
 #source ~/.vimrc'
        echo 'Login with gh cli: gh auth login'
-       echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright'
+       echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright coc-java'
 
 
 # Run :Copilot setup in nvim to link account
