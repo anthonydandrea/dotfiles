@@ -56,8 +56,6 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'ThePrimeagen/harpoon'
 
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 """ Let
@@ -74,9 +72,6 @@ let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinSize=80
 
-
-
-"
 " the configuration options should be placed before `colorscheme miramare`
 let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
@@ -100,7 +95,7 @@ map <C-h> :BufferPrevious<CR>
 map <C-l> :BufferNext<CR>
 
 " copy to system clipboard
-" map <leader>y "+y
+map <leader>C "+y
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
