@@ -216,6 +216,7 @@ endfunction
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
 " autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+map <leader>F :Autoformat<CR>
 
 " Run Autoformat on Leader-F
 nnoremap <leader>F :Autoformat<CR>
