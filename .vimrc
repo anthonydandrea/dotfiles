@@ -76,6 +76,9 @@ let g:NERDTreeWinSize=80
 let g:miramare_enable_italic = 1
 let g:miramare_disable_italic_comment = 1
 
+" search history memory https://gist.github.com/junegunn/f8a0b2712656867888e79397cc5cbffc
+let g:fzf_history_dir = '~/.fzf-history'
+
 " let g:current_directory = getcwd()
 
 """ Map
@@ -90,9 +93,13 @@ map <C-p> :Files<CR>
 command! -bang -nargs=* PRg
   \ call fzf#vim#grep("rg --files --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': g:current_directory }, <bang>0)
 
+let g:fzf_history_dir = '~/.fzf-history'
 " map <C-[> :Rg<CR>
 map <C-h> :BufferPrevious<CR>
 map <C-l> :BufferNext<CR>
+
+" Ripgrep
+map <leader>r :Rg<CR>
 
 " copy to system clipboard
 map <leader>C "+y
