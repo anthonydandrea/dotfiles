@@ -1,4 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'https://github.com/sharkdp/fd.git'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -100,6 +101,9 @@ map <C-l> :BufferNext<CR>
 
 " Ripgrep
 map <leader>r :Rg<CR>
+
+" CodeWhisperer generate
+map <leader>g :CWGenerateNvim<CR>
 
 " copy to system clipboard
 map <leader>C "+y
