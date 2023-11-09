@@ -10,6 +10,10 @@ Plug 'tpope/vim-repeat'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
+" Docstrings
+" https://github.com/danymat/neogen#features
+Plug 'danymat/neogen'
+
 " Cursor search highlight
 Plug 'https://github.com/PeterRincker/vim-searchlight.git'
 
@@ -63,6 +67,8 @@ Plug '/apollo/env/envImprovement/vim/amazon/brazil-config'
 
 call plug#end()
 
+
+
 """ Let
 let mapleader = " "
 " ctrlp.vim settings
@@ -113,6 +119,10 @@ map <leader>g :CWGenerateNvim<CR>
 
 " copy to system clipboard
 map <leader>C "+y
+
+" generate documentation for code
+autocmd VimEnter * :luafile ~/.config/nvim/lua/lua_setup.lua
+map <leader>D :Neogen<CR>
 
 " leader p to paste from yank buffer
 nnoremap <leader>p "0p
