@@ -1,9 +1,9 @@
 {
     "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
-    "kotlin": {
-        "command": "~/lsp/kotlin/server/bin/kotlin-language-server",
-        "filetypes": ["kotlin"]
-      }
+        "brazil-config": {
+            "command": "barium",
+            "filetypes": ["brazil-config"]
+        }
     }
 }

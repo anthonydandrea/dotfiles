@@ -44,7 +44,7 @@ Plug 'franbach/miramare'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -57,6 +57,10 @@ Plug 'hrsh7th/nvim-cmp'
 
 Plug 'ThePrimeagen/harpoon'
 
+Plug '/apollo/env/envImprovement/vim/amazon/brazil-config'
+
+" Plug '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimPlugin'
+
 call plug#end()
 
 """ Let
@@ -68,6 +72,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+
+let g:brazil_config_plugin_path = '/apollo/env/envImprovement/vim/amazon/brazil-config'
 
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
@@ -92,7 +98,7 @@ map <C-n> <C-b>
 map <C-p> :Files<CR>
 
 command! -bang -nargs=* PRg
-  \ call fzf#vim#grep("rg --files --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': g:current_directory }, <bang>0)
+            \ call fzf#vim#grep("rg --files --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': g:current_directory }, <bang>0)
 
 let g:fzf_history_dir = '~/.fzf-history'
 " map <C-[> :Rg<CR>

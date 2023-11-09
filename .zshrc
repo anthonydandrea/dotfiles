@@ -54,6 +54,7 @@ alias save-dots='sd'
 alias vim="nvim"
 # "vim open"
 alias vo="nvim ."
+alias vc="vim ~/.vimrc"
 alias h="history"
 alias s="source ~/.zshrc && source ~/.zshrc.aws &> /dev/null || true"
 alias server="python3 -m http.server"
