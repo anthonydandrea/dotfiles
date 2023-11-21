@@ -31,7 +31,6 @@ while i < len(filled_array):
     filled_array[i] = True
     filled_array[j] = False
     if j == cur_window:
-        print(f"Set cur_window from {cur_window} to {i}")
         cur_window = i
 
     subprocess.run(move_window_cmd.format(j, i), shell=True)
