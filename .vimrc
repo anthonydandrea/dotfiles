@@ -7,8 +7,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-repeat'
 
 " Tabs
-Plug 'nvim-tree/nvim-web-devicons'
-Plug 'romgrk/barbar.nvim'
+" Plug 'nvim-tree/nvim-web-devicons'
+" Plug 'romgrk/barbar.nvim'
 
 " Docstrings
 " https://github.com/danymat/neogen#features
@@ -168,7 +168,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 " Tabs for buffers
 " map T <Cmd>BufferPrevious<CR>
 " map t <Cmd>BufferNext<CR>
-map <leader>q <Cmd>BufferClose<CR>
+" map <leader>q <Cmd>BufferClose<CR>
 
 map <leader>m <Cmd>lua require("harpoon.mark").add_file()<CR>
 map <leader>f <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
