@@ -76,6 +76,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
+let g:python3_host_prog="/usr/local/bin/python3"
+
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
