@@ -1,0 +1,4 @@
+{
+  "bamboo.nvim": { "branch": "master", "commit": "719ddc658e50335446c002020412d015f016893b" },
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" }
+}

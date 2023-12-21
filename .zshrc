@@ -7,7 +7,11 @@ export ZSH=$HOME/.oh-my-zsh
 export HISTCONTROL=ignoreboth:erasedups
 
 ZSH_THEME="awesomepanda"
-DISABLE_UPDATE_PROMPT="true"
+# DISABLE_UPDATE_PROMPT="true"
+zstyle ':omz:update' mode reminder
+# check for updates every 2 weeks
+zstyle ':omz:update' frequency 14
+
 
 export FZF_DEFAULT_COMMAND="rg --files -i"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -15,7 +19,19 @@ export EDITOR='nvim'
 # export TERM=tmux-256color
 #command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-plugins=(git zsh-autosuggestions)
+plugins=(git gitfast zsh-autosuggestions)
+
+# Load all of the plugins that were defined in ~/.zshrc
+# for plugin ($plugins); do
+#   start=$SECONDS
+#   if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
+#     source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
+#   elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+#     source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+#   fi
+#   duration=$(( SECONDS - start ))
+#   echo $duration":" $plugin
+# done
 
 
 # Disable auto update of oh-my-zsh
@@ -115,3 +131,4 @@ unset __conda_setup
 
 # Added by Amplify CLI binary installer
 export PATH="/usr/local/bin/:$PATH:$HOME/.amplify/bin:/Users/anthonydandrea/Library/Python/3.11/lib/python/site-packages"
+source /Users/anthdand/.brazil_completion/zsh_completion

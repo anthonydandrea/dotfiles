@@ -261,74 +261,87 @@ command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
 
 """ Themeing
 syntax on
-colorscheme miramare
-
-hi LineNr guifg=orange
-
-" Highlighting off
-hi rustKeyword guibg=bg guifg=#ff8080
-hi rustConditional guibg=bg guifg=#ff8080
-hi rustRepeat guibg=bg guifg=#ff8080
-hi rustTypedef guibg=bg guifg=#ff8080
-hi rustModPathSep guibg=bg guifg=white
-hi rustDerive guibg=bg guifg=#e0abdb
-hi rustAttribute guibg=bg guifg=#e0abdb
-hi rustDeriveTrait guibg=bg guifg=#e0abdb
-hi rustPubScopeCrate guibg=bg guifg=#e0abdb
 
 
-hi typescriptOperator guibg=bg guifg=#ff8080
-hi typescriptAmbientDeclaration guibg=bg guifg=#ff8080
-hi typescriptExceptions guibg=bg guifg=#ff8080
-hi typescriptCastKeyword guibg=bg guifg=#ff8080
-hi typescriptMappedIn guibg=bg guifg=#ff8080
-hi typescriptDOMStyle guibg=bg guifg=#ff8080
-hi typescriptForOperator guibg=bg guifg=#ff8080
-hi typescriptConditional guibg=bg guifg=#ff8080
-hi typescriptConditionalElse guibg=bg guifg=#ff8080
-hi typescriptRepeat guibg=bg guifg=#ff8080
-hi typescriptDotNotation guibg=bg guifg=white
-hi typescriptGlobalNumberDot guibg=bg guifg=white
-hi typescriptGlobalStringDot guibg=bg guifg=white
-hi typescriptGlobalArrayDot guibg=bg guifg=white
-hi typescriptGlobalObjectDot guibg=bg guifg=white
-hi typescriptGlobalSymbolDot guibg=bg guifg=white
-hi typescriptGlobalMathDot guibg=bg guifg=white
-hi typescriptGlobalDateDot guibg=bg guifg=white
-hi typescriptGlobalJSONDot guibg=bg guifg=white
-hi typescriptGlobalPromiseDot guibg=bg guifg=white
-hi typescriptGlobalRegExpDot guibg=bg guifg=white
-hi typescriptGlobalURLDot guibg=bg guifg=white
-hi typescriptObjectColon guibg=bg guifg=white
-hi typescriptTypeAnnotation guibg=bg guifg=white
-hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
-hi typescriptExport guibg=bg guifg=#e0abdb
-hi typescriptImport guibg=bg guifg=#e0abdb
-hi typescriptCase guibg=none guifg=orange
-hi typescriptBranch guibg=none guifg=violet
-hi typescriptStatementKeyword guibg=none guifg=#ff8080
-hi typescriptClassKeyword guibg=none guifg=lightblue
-hi typescriptClassExtends guibg=none guifg=lightgreen
-hi typescriptArrowFuncArg guibg=none guifg=lightred
-hi typescriptAliasKeyword guibg=none guifg=orange
-hi typescriptInterfaceKeyword guibg=none guifg=silver
-hi typescriptInterfaceExtends guibg=none guifg=yellow
 
-hi jsonQuote guifg=lightgrey
-hi javaClassDecl guibg=none guifg=pink
-hi javaExternal guibg=none guifg=cyan
-hi javaExceptions guibg=none guifg=orange
-hi javaStatement guibg=none guifg=pink
-hi javaMethodDecl guibg=none guifg=brown
-hi javaBranch guibg=none guifg=cyan
-hi javaRepeat guibg=none guifg=violet
-hi jsDot guifg=white
+colorscheme bamboo
 
-hi shComment guifg=#dddddd
-hi javaTypedef guifg=cyan
-hi javaType guifg=#91d0e3
 
-hi vimCommand guibg=bg guifg=pink
-hi vimMap guibg=bg guifg=violet
-hi vimFgBgAttrib guibg=bg
-hi vimEnvvar guibg=bgk guifg=gold
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" Old custom theme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" colorscheme miramare
+
+" hi LineNr guifg=orange
+
+" " Highlighting off
+" hi rustKeyword guibg=bg guifg=#ff8080
+" hi rustConditional guibg=bg guifg=#ff8080
+" hi rustRepeat guibg=bg guifg=#ff8080
+" hi rustTypedef guibg=bg guifg=#ff8080
+" hi rustModPathSep guibg=bg guifg=white
+" hi rustDerive guibg=bg guifg=#e0abdb
+" hi rustAttribute guibg=bg guifg=#e0abdb
+" hi rustDeriveTrait guibg=bg guifg=#e0abdb
+" hi rustPubScopeCrate guibg=bg guifg=#e0abdb
+
+
+" hi typescriptOperator guibg=bg guifg=#ff8080
+" hi typescriptAmbientDeclaration guibg=bg guifg=#ff8080
+" hi typescriptExceptions guibg=bg guifg=#ff8080
+" hi typescriptCastKeyword guibg=bg guifg=#ff8080
+" hi typescriptMappedIn guibg=bg guifg=#ff8080
+" hi typescriptDOMStyle guibg=bg guifg=#ff8080
+" hi typescriptForOperator guibg=bg guifg=#ff8080
+" hi typescriptConditional guibg=bg guifg=#ff8080
+" hi typescriptConditionalElse guibg=bg guifg=#ff8080
+" hi typescriptRepeat guibg=bg guifg=#ff8080
+" hi typescriptDotNotation guibg=bg guifg=white
+" hi typescriptGlobalNumberDot guibg=bg guifg=white
+" hi typescriptGlobalStringDot guibg=bg guifg=white
+" hi typescriptGlobalArrayDot guibg=bg guifg=white
+" hi typescriptGlobalObjectDot guibg=bg guifg=white
+" hi typescriptGlobalSymbolDot guibg=bg guifg=white
+" hi typescriptGlobalMathDot guibg=bg guifg=white
+" hi typescriptGlobalDateDot guibg=bg guifg=white
+" hi typescriptGlobalJSONDot guibg=bg guifg=white
+" hi typescriptGlobalPromiseDot guibg=bg guifg=white
+" hi typescriptGlobalRegExpDot guibg=bg guifg=white
+" hi typescriptGlobalURLDot guibg=bg guifg=white
+" hi typescriptObjectColon guibg=bg guifg=white
+" hi typescriptTypeAnnotation guibg=bg guifg=white
+" hi typescriptNodeGlobal guibg=bg guifg=#e0abdb
+" hi typescriptExport guibg=bg guifg=#e0abdb
+" hi typescriptImport guibg=bg guifg=#e0abdb
+" hi typescriptCase guibg=none guifg=orange
+" hi typescriptBranch guibg=none guifg=violet
+" hi typescriptStatementKeyword guibg=none guifg=#ff8080
+" hi typescriptClassKeyword guibg=none guifg=lightblue
+" hi typescriptClassExtends guibg=none guifg=lightgreen
+" hi typescriptArrowFuncArg guibg=none guifg=lightred
+" hi typescriptAliasKeyword guibg=none guifg=orange
+" hi typescriptInterfaceKeyword guibg=none guifg=silver
+" hi typescriptInterfaceExtends guibg=none guifg=yellow
+
+" hi jsonQuote guifg=lightgrey
+" hi javaClassDecl guibg=none guifg=pink
+" hi javaExternal guibg=none guifg=cyan
+" hi javaExceptions guibg=none guifg=orange
+" hi javaStatement guibg=none guifg=pink
+" hi javaMethodDecl guibg=none guifg=brown
+" hi javaBranch guibg=none guifg=cyan
+" hi javaRepeat guibg=none guifg=violet
+" hi jsDot guifg=white
+" hi javaTypedef guifg=cyan
+" hi javaType guifg=#91d0e3
+
+" hi shComment guifg=#dddddd
+
+" hi vimCommand guibg=bg guifg=pink
+" hi vimMap guibg=bg guifg=violet
+" hi vimFgBgAttrib guibg=bg
+" hi vimEnvvar guibg=bgk guifg=gold
