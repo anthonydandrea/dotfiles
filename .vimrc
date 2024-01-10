@@ -217,6 +217,8 @@ set so=999
 set number relativenumber
 set cursorline
 set termguicolors
+set ignorecase
+set smartcase
 
 nmap <leader>n :call ChangeLineNumbering()<CR>
 
@@ -261,13 +263,32 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 """ Misc
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
 
+function! s:ReplaceAll(...)
+if len(a:000) != 2
+    echoerr "RA requires exactly 2 arguments"
+    return
+  endif
+  let arg1 = a:000[0]
+  let arg2 = a:000[1]
+  execute 'Ack ' . arg1
+  sleep 1
+  " This closes the current window brought up by Ack
+  execute 'wincmd c'
+  execute 'Acks /' . arg1 . '/' . arg2 . '/'
+endfunction
+
+command -nargs=* RA call s:ReplaceAll(<f-args>)
+
+
 """ Themeing
-syntax on
+" syntax on
 
 
 
-colorscheme bamboo
+" colorscheme bamboo
 
+hi rustCommentBlock guibg=none
+hi rustStorage guibg=none
 
 
 

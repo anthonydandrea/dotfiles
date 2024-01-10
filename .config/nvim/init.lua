@@ -11,16 +11,27 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("lazy").setup({
+    -- {
+    --     'ribru17/bamboo.nvim',
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require('bamboo').setup {
+    --             style = 'vulgaris',
+    --             highlights = {
+    --             }
+    --         }
+    --         require('bamboo').load()
+    --     end,
+    -- },
     {
-        'ribru17/bamboo.nvim',
+        'rmehri01/onenord.nvim',
         lazy = false,
         priority = 1000,
         config = function()
-            require('bamboo').setup {
-                -- optional configuration here
-            }
-            require('bamboo').load()
+            require('onenord').setup()
         end,
     },
     {
@@ -42,6 +53,8 @@ require("lazy").setup({
     },
     -- " Cursor search highlight
     { 'https://github.com/PeterRincker/vim-searchlight.git' },
+    -- Multi file search replace
+    { 'https://github.com/wincent/ferret.git' },
     -- " autoformatting
     { 'vim-autoformat/vim-autoformat' },
     -- " surround.vim
