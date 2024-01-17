@@ -1,73 +1,3 @@
-" call plug#begin('~/.local/share/nvim/plugged')
-
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'https://github.com/sharkdp/fd.git'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plug 'tpope/vim-repeat'
-
-" " Tabs
-" " Plug 'nvim-tree/nvim-web-devicons'
-" " Plug 'romgrk/barbar.nvim'
-
-" " Docstrings
-" " https://github.com/danymat/neogen#features
-" Plug 'danymat/neogen'
-
-" " Cursor search highlight
-" Plug 'https://github.com/PeterRincker/vim-searchlight.git'
-
-" " Copilot
-" " Plug 'https://github.com/github/copilot.vim'
-
-" " autoformatting
-" Plug 'vim-autoformat/vim-autoformat'
-
-" " autoread plug to refresh buffers when changed on fs in background
-" " Plug 'https://github.com/TheZoq2/neovim-auto-autoread.git'
-
-" " surround.vim
-" Plug 'https://tpope.io/vim/surround.git'
-
-" " Git support
-" Plug 'https://github.com/airblade/vim-gitgutter.git'
-
-" " Comments
-" Plug 'https://tpope.io/vim/commentary.git'
-
-" " NERDTree
-" Plug 'preservim/nerdtree'
-
-" " Smooth scroll
-" Plug 'psliwka/vim-smoothie'
-
-" " Theme
-" Plug 'franbach/miramare'
-
-" " Syntax highlighting
-" Plug 'yuezk/vim-js'
-" Plug 'maxmellon/vim-jsx-pretty'
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'hrsh7th/cmp-buffer'
-" Plug 'hrsh7th/cmp-path'
-" Plug 'hrsh7th/cmp-cmdline'
-" Plug 'hrsh7th/nvim-cmp'
-
-" Plug 'ThePrimeagen/harpoon'
-
-" Plug '/apollo/env/envImprovement/vim/amazon/brazil-config'
-
-" " Plug '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimPlugin'
-
-" call plug#end()
-
-
 
 """ Let
 let mapleader = " "
@@ -76,8 +6,15 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
-let g:python3_host_prog="/usr/local/bin/python3"
 
+if system('uname') =~ 'Linux'
+    " Set variable for Linux systems
+    let g:python3_host_prog="/home/linuxbrew/.linuxbrew/bin/python3"
+elseif system('uname') =~ 'Darwin'
+    " Set variable for macOS (Darwin)
+    let g:python3_host_prog="/usr/local/bin/python3"
+else
+endif
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 

@@ -131,4 +131,4 @@ unset __conda_setup
 
 # Added by Amplify CLI binary installer
 export PATH="/usr/local/bin/:$PATH:$HOME/.amplify/bin:/Users/anthonydandrea/Library/Python/3.11/lib/python/site-packages"
-source /Users/anthdand/.brazil_completion/zsh_completion
+# source /Users/anthdand/.brazil_completion/zsh_completion
