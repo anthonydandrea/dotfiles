@@ -1,4 +1,5 @@
 {
+    "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
         "brazil-config": {
