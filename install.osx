@@ -22,6 +22,10 @@ ln -s ~/Repos/dotfiles/.gitignore ~/.gitignore
 ln -s ~/Repos/dotfiles/.tmux.confg ~/.tmux.conf
 ln -s ~/Repos/dotfiles/.tmux ~/.tmux
 
+mkdir -p ~/.tmux/plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 git config --global core.excludesFile '~/.gitignore'
 
 # install vim-plug
