@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 export HISTCONTROL=ignoreboth:erasedups
 
-ZSH_THEME="awesomepanda"
+export ZSH_THEME="awesomepandafdaiop"
 # DISABLE_UPDATE_PROMPT="true"
 zstyle ':omz:update' mode reminder
 # check for updates every 2 weeks

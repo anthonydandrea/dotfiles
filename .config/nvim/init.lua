@@ -81,7 +81,7 @@ require("lazy").setup({
     { 'hrsh7th/cmp-cmdline' },
     { 'hrsh7th/nvim-cmp' },
     { 'ThePrimeagen/harpoon' },
-    { dir = '/apollo/env/envImprovement/vim/amazon/brazil-config', lazy = true  },
+    { dir = '/apollo/env/envImprovement/vim/amazon/brazil-config' },
     -- { dir = '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimin' }
 
     -- " Tabs
