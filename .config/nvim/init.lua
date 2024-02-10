@@ -98,4 +98,10 @@ require("lazy").setup({
     -- { 'https://github.com/airblade/vim-gitgutter.git' },
 })
 
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+  },
+}
+
 vim.cmd('source ~/.config/nvim/another_init.vim')
