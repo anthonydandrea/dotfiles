@@ -56,7 +56,8 @@ require("lazy").setup({
     -- Multi file search replace
     { 'https://github.com/wincent/ferret.git' },
     -- " autoformatting
-    { 'vim-autoformat/vim-autoformat' },
+    -- { 'vim-autoformat/vim-autoformat' },
+    { 'sbdchd/neoformat' },
     -- " surround.vim
     { 'https://tpope.io/vim/surround.git' },
     -- " Comments

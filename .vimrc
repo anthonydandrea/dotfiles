@@ -31,6 +31,11 @@ let g:miramare_disable_italic_comment = 1
 " search history memory https://gist.github.com/junegunn/f8a0b2712656867888e79397cc5cbffc
 let g:fzf_history_dir = '~/.fzf-history'
 
+let g:autoformat_verbosemode=1
+let g:formatters_typescriptreact = ['eslint_local']
+" let g:formatdef_prettier = 'npx prettier . --write'
+let g:neoformat_run_all_formatters = 1
+" let g:formatdef_prettier = '"npx prettier --stdin-filepath ".expand("%:p").(&textwidth ? " --print-width ".&textwidth : "")." --tab-width=".shiftwidth() --write'
 " let g:current_directory = getcwd()
 
 """ Map
@@ -184,10 +189,10 @@ endfunction
 autocmd FileType nerdtree setlocal relativenumber
 " autoformat on save
 " autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
-map <leader>F :Autoformat<CR>
+" map <leader>F :Autoformat<CR>
 
 " Run Autoformat on Leader-F
-nnoremap <leader>F :Autoformat<CR>
+nnoremap <leader>F :Neoformat<CR>
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
     silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
