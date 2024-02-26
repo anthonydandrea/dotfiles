@@ -1,5 +1,5 @@
 {
-    "rust-analyzer.diagnostics.disabled": ["inactive-code"],
+    "rust-analyzer.diagnostics.disabled": ["inactive-code", "unresolved-proc-macro"],
     "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
         "brazil-config": {

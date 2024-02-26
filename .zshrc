@@ -88,7 +88,7 @@ export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
 export PYSPARK_DRIVER_PYTHON=jupyter
 export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-export JAVA_HOME=/usr/local/opt/openjdk@20/libexec/openjdk.jdk/Contents/Home
+# export JAVA_HOME=/usr/local/opt/openjdk@20/libexec/openjdk.jdk/Contents/Home
 
 
 if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
