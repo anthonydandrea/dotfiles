@@ -60,10 +60,10 @@ function date_time() {
     # For daylight savings (after Spring and before Fall), add 1 hour
 
     # After Sprint forward
-    # printf "%s" "$(TZ="EST" date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')"
+    printf "%s" "$(TZ="EST" date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')"
 
     # After Fall back
-    printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
+    # printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
 }
 
 function main() {
