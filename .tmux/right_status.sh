@@ -60,7 +60,13 @@ function date_time() {
     # For daylight savings (after Spring and before Fall), add 1 hour
 
     # After Sprint forward
-    printf "%s" "$(TZ="EST" date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')"
+    export TZ="EST"
+    if [[ $(uname) == "Darwin" ]]; then
+        value=$(date -v+1H +'%Y-%m-%d %H:%M:%S %Z')
+    else
+        value=$(date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')
+    fi
+    printf "%s" "$value"
 
     # After Fall back
     # printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
