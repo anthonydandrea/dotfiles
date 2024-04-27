@@ -1,25 +1,31 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "~/Repos/dotfiles/p10k-instant-prompt-anthonydandrea.zsh" ]]; then
+  source "~/Repos/dotfiles/p10k-instant-prompt-anthonydandrea.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:/Users/anthonydandrea/Library/Android/sdk/platform-tools/
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export ZSH_THEME="powerlevel10k/powerlevel10k"
+zstyle ':omz:update' mode reminder
+zstyle ':omz:update' frequency 28 # check for updates every 4 weeks
+DISABLE_AUTO_UPDATE=true # Disable auto update of oh-my-zsh
+plugins=(git gitfast zsh-autosuggestions battery)
+source $ZSH/oh-my-zsh.sh
+
+
+
 
 export HISTCONTROL=ignoreboth:erasedups
-
-export ZSH_THEME="awesomepanda"
-# DISABLE_UPDATE_PROMPT="true"
-zstyle ':omz:update' mode reminder
-# check for updates every 2 weeks
-zstyle ':omz:update' frequency 14
-
 
 export FZF_DEFAULT_COMMAND="rg --files -i"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export EDITOR='nvim'
-# export TERM=tmux-256color
-#command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-plugins=(git gitfast zsh-autosuggestions)
 
 # Load all of the plugins that were defined in ~/.zshrc
 # for plugin ($plugins); do
@@ -33,10 +39,6 @@ plugins=(git gitfast zsh-autosuggestions)
 #   echo $duration":" $plugin
 # done
 
-
-# Disable auto update of oh-my-zsh
-DISABLE_AUTO_UPDATE=true
-source $ZSH/oh-my-zsh.sh
 
 # Tmux aliases
 alias tmuxk='tmux kill-session -t'
@@ -130,3 +132,6 @@ unset __conda_setup
 # Added by Amplify CLI binary installer
 export PATH="/usr/local/bin/:$PATH:$HOME/.amplify/bin:/Users/anthonydandrea/Library/Python/3.11/lib/python/site-packages"
 # source /Users/anthdand/.brazil_completion/zsh_completion
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

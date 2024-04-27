@@ -58,6 +58,8 @@ require("lazy").setup({
     -- " autoformatting
     -- { 'vim-autoformat/vim-autoformat' },
     { 'sbdchd/neoformat' },
+    -- Kotlin syntax highlighting
+    { 'udalov/kotlin-vim' },
     -- " surround.vim
     { 'https://tpope.io/vim/surround.git' },
     -- " Comments
