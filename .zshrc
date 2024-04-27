@@ -14,11 +14,10 @@ export ZSH_THEME="powerlevel10k/powerlevel10k"
 zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 28 # check for updates every 4 weeks
 DISABLE_AUTO_UPDATE=true # Disable auto update of oh-my-zsh
-plugins=(git gitfast zsh-autosuggestions battery)
-source $ZSH/oh-my-zsh.sh
 
-
-
+plugins=(git gitfast zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
+export ZVM_VI_ESCAPE_BINDKEY=jj
+source $ZSH/oh-my-zsh.sh # Must source after plugins declaration
 
 export HISTCONTROL=ignoreboth:erasedups
 
