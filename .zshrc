@@ -39,7 +39,7 @@ export EDITOR='nvim'
 # done
 
 
-# Tmux aliases
+## Tmux aliases
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
@@ -114,17 +114,17 @@ if [ -f '/Users/anthonydandrea/Downloads/google-cloud-sdk/completion.zsh.inc' ];
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/anthonydandrea/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/anthonydandrea/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/Users/anthonydandrea/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/anthonydandrea/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/anthonydandrea/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 
