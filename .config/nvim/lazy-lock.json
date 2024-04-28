@@ -18,6 +18,7 @@
   "nerdtree": { "branch": "master", "commit": "a9546618241e61e785aa4c21b3de0cb657f3b828" },
   "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-lspconfig": { "branch": "master", "commit": "e3371e11f8d8045a1d01905e59057530cea2b472" },
+  "nvim-spectre": { "branch": "master", "commit": "026394a8458d62c6b7b305c076ce675420dbaa4c" },
   "nvim-treesitter": { "branch": "master", "commit": "d2d3df8613ba0b733cc21ed150e3687fad147316" },
   "onenord.nvim": { "branch": "main", "commit": "879bc64ea4678bf32d2bfda47c4e3a04af52a448" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },

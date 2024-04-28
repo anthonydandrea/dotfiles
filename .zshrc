@@ -79,8 +79,7 @@ alias server="python3 -m http.server"
 #alias here="echo $(whoami)@$(hostname):$(pwd)"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
 
-alias metpro-db="mongosh "mongodb+srv://metpro34-db-instance.vignm.mongodb.net/myFirstDatabase" --apiVersion 1 --username metpro34-db-user"
-alias mp="pushd ~/Repos/MetPro34"
+alias rust="evcxr"
 
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
