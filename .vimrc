@@ -69,7 +69,8 @@ autocmd VimEnter * :luafile ~/.config/nvim/lua/lua_setup.lua
 map <leader>D :Neogen<CR>
 
 " leader p to paste from yank buffer
-nnoremap <leader>p "0p
+" nnoremap <leader>p "0p
+vnoremap <leader>p "_dP
 
 " leader-w to :w
 nnoremap <leader>w :w<CR>
