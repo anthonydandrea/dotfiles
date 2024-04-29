@@ -1,4 +1,4 @@
-!/usr/bin/bash
+#!/usr/bin/bash
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/anthdand/.zprofile
@@ -21,6 +21,7 @@ ln -s ~/Repos/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Repos/dotfiles/.gitignore ~/.gitignore
 ln -s ~/Repos/dotfiles/.tmux.confg ~/.tmux.conf
 ln -s ~/Repos/dotfiles/.tmux ~/.tmux
+ln -s ~/Repos/dotfiles/.p10k.zsh ~/.p10k.zsh
 
 mkdir -p ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
