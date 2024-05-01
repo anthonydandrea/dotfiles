@@ -40,10 +40,10 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Dep for nvim-telescope
-       brew install ripgrep
+brew install ripgrep
 
 # install tmux
-       brew install tmux
+brew install tmux
 
 # install oh-my-zsh
        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -54,17 +54,20 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # install Github cli
        :exe 'edit '.stdpath('config').'/init.vim'
 
-       brew install gh
-       brew install fzf
+brew install gh
+brew install fzf
 
 # install neovim python module for python plugins
-       pip3 install neovim
+pip3 install neovim
 
 # install rustup
-       curl https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh
 
 # zsh autosuggestions
-       git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+# zoxide
+brew install zoxide
 
 
 # Font installation

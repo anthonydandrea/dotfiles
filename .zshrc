@@ -39,6 +39,10 @@ export EDITOR='nvim'
 # done
 
 
+alias cd="z"
+alias cdi="zi"
+
+
 ## Tmux aliases
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
@@ -131,5 +135,9 @@ if [ -f '/Users/anthonydandrea/Downloads/google-cloud-sdk/completion.zsh.inc' ];
 export PATH="/usr/local/bin/:$PATH:$HOME/.amplify/bin:/Users/anthonydandrea/Library/Python/3.11/lib/python/site-packages"
 # source /Users/anthdand/.brazil_completion/zsh_completion
 
+eval "$(zoxide init zsh)"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
