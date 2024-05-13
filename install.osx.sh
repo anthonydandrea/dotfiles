@@ -45,6 +45,7 @@ brew install ripgrep
 # install tmux
 brew install tmux
 
+
 # install oh-my-zsh
        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -62,6 +63,7 @@ pip3 install neovim
 
 # install rustup
 curl https://sh.rustup.rs -sSf | sh
+cargo install tokei
 
 # zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -88,8 +90,9 @@ curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 #set runtimepath^=~/.vim runtimepath+=~/.vim/after\
 #let &packpath = &runtimepath\
 #source ~/.vimrc'
-       echo 'Login with gh cli: gh auth login'
-       echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright coc-java'
+echo 'Login with gh cli: gh auth login'
+echo 'Install coc.nvim servers:  :CocInstall coc-json coc-tsserver coc-rust-analyzer coc-pyright coc-java'
+echo 'Install TreeSitter langs: :TSInstall c rust json python'
 
 
 # Run :Copilot setup in nvim to link account
