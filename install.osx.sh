@@ -96,3 +96,6 @@ echo 'Install TreeSitter langs: :TSInstall c rust json python'
 
 
 # Run :Copilot setup in nvim to link account
+
+
+crontab ~/Repos/dotfiles/cron-jobs.txt
