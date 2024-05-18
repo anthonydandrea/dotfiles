@@ -1,1 +1,1 @@
-0 */12 * * * ~/Repos/dotfiles/sync-notes.sh
+0 */1 * * * ~/Repos/dotfiles/sync-notes
