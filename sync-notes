@@ -6,7 +6,6 @@ import time
 
 
 def find_old_files(root_dir, age_minutes=30):
-    os.chdir(root_dir)
     age_seconds = age_minutes * 60
     current_time = time.time()
 
@@ -16,12 +15,14 @@ def find_old_files(root_dir, age_minutes=30):
             if ".git" in file_path:
                 continue
             if current_time - os.path.getmtime(file_path) > age_seconds:
-                # print(file_path)
                 subprocess.run(["git", "add", file_path], check=True)
 
 
-# Replace 'your_directory_path' with the path to your directory
 home = os.environ["HOME"]
-find_old_files(home + "/Repos/Obsidian")
-subprocess.run(["git", "commit", "-m", "Syncing notes"], check=True)
-subprocess.run(["git", "push"], check=True)
+notes_dir = home + "/Repos/Obsidian"
+os.chdir(notes_dir)
+
+find_old_files(notes_dir)
+
+subprocess.run(["git", "commit", "-m", "Syncing notes"])
+subprocess.run(["git", "push"])
