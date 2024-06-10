@@ -6,7 +6,8 @@ if [[ -r "~/Repos/dotfiles/p10k-instant-prompt-anthonydandrea.zsh" ]]; then
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/Users/anthonydandrea/Library/Android/sdk/platform-tools/
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/Users/anthonydandrea/Library/Android/sdk/platform-tools/:/opt/homebrew/bin
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -141,3 +142,10 @@ eval "$(zoxide init zsh)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=$PATH:/Users/anthdand/.toolbox/bin
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Set up mise for runtime management
+eval "$(mise activate zsh)"
+
+export PATH=$HOME/.toolbox/bin:$PATH
