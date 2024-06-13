@@ -60,7 +60,7 @@ function date_time() {
     # For daylight savings (after Spring and before Fall), add 1 hour
 
     # After Sprint forward
-    export TZ="EST"
+    export TZ="PST"
     if [[ $(uname) == "Darwin" ]]; then
         value=$(date -v+1H +'%Y-%m-%d %H:%M:%S %Z')
     else

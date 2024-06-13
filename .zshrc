@@ -48,7 +48,7 @@ alias cdi="zi"
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
-alias tmuxa='tmux attach-session -t'
+alias tmuxa='tmux a'
 alias tmuxd='tmux detach'
 
 # Docker

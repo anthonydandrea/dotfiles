@@ -78,7 +78,25 @@ require("lazy").setup({
     { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
     { 'junegunn/fzf' },
     { 'junegunn/fzf.vim' },
-    { 'neovim/nvim-lspconfig' },
+    -- { 'neovim/nvim-lspconfig' },
+    {
+        "neovim/nvim-lspconfig",
+        cmd = function ()
+            local lspconfig = require 'lspconfig'
+            local configs = require 'lspconfig.configs'
+            if not configs.codewhisperer then
+                configs.codewhisperer = {
+                    default_config = {
+                        -- Add the codewhisperer to our PATH or BIN folder
+                        cmd = { "cwls" },
+                        root_dir = lspconfig.util.root_pattern("packageInfo", "package.json", "tsconfig.json", "jsconfig.json", ".git"),
+                        filetypes = { 'java', 'python', 'typescript', 'javascript', 'csharp', 'ruby', 'kotlin', 'shell', 'sql', 'c', 'cpp', 'go', 'rust', 'lua' },
+                    },
+                }
+            end
+            lspconfig.codewhisperer.setup {}
+        end,
+    },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'hrsh7th/cmp-path' },
