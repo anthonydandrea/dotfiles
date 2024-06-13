@@ -144,8 +144,8 @@ eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH=$PATH:/Users/anthdand/.toolbox/bin
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 # Set up mise for runtime management
-eval "$(mise activate zsh)"
+# eval "$(mise activate zsh)"
 
 export PATH=$HOME/.toolbox/bin:$PATH
