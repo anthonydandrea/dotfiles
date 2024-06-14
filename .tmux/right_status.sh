@@ -64,7 +64,7 @@ function date_time() {
     if [[ $(uname) == "Darwin" ]]; then
         value=$(date -v+1H +'%Y-%m-%d %H:%M:%S %Z')
     else
-        value=$(date -d '+1 hour' +'%Y-%m-%d %H:%M:%S %Z')
+        value=$(TZ='America/Los_Angeles' date +'%m/%d/%Y %H:%M:%S')
     fi
     printf "%s" "$value"
 
