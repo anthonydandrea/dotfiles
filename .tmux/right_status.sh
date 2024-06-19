@@ -57,19 +57,7 @@ function load_average() {
 }
 
 function date_time() {
-    # For daylight savings (after Spring and before Fall), add 1 hour
-
-    # After Sprint forward
-    export TZ="PST"
-    if [[ $(uname) == "Darwin" ]]; then
-        value=$(date -v+1H +'%Y-%m-%d %H:%M:%S %Z')
-    else
-        value=$(TZ='America/Los_Angeles' date +'%m/%d/%Y %H:%M:%S')
-    fi
-    printf "%s" "$value"
-
-    # After Fall back
-    # printf "%s" "$(TZ="EST" date +'%Y-%m-%d %H:%M:%S %Z')"
+    printf "%s" "$(TZ='America/Los_Angeles' date +'%m/%d/%Y  |  %H:%M:%S')"
 }
 
 function main() {
