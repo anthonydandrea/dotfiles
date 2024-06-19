@@ -1,23 +1,13 @@
 {
-<<<<<<< Updated upstream
-    "rust-analyzer.enable": false,
-    "rust-analyzer.diagnostics.disabled": ["inactive-code", "unresolved-proc-macro"],
-    "rust-analyzer.enable": true,
-    "rust-analyzer.updates.checkOnStartup": false,
+    "rust-analyzer.server.path": "/Users/anthdand/.cargo/bin/rust-analyzer",
     "languageserver": {
         "brazil-config": {
             "command": "barium",
             "filetypes": ["brazil-config"]
-        }
+        },
+        "kotlin": {
+            "command": "~/lsp/kotlin/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"]
+          }
     },
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd"
-=======
-    "rust-analyzer.updates.checkOnStartup": false,
-    "languageserver": {
-    "kotlin": {
-        "command": "~/lsp/kotlin/server/bin/kotlin-language-server",
-        "filetypes": ["kotlin"]
-      }
-    }
->>>>>>> Stashed changes
 }

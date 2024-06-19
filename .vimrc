@@ -98,7 +98,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call ShowDocumentation()<CR>
+" nnoremap <silent> K :call ShowDocumentation()<CR>
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -114,18 +114,17 @@ map <leader>f <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
 " autocmd VimEnter * Copilot enable
 
 
-function! ShowDocumentation()
-    if CocAction('hasProvider', 'hover')
-        call CocActionAsync('doHover')
-    else
-        call feedkeys('K', 'in')
-    endif
-endfunction
+" function! ShowDocumentation()
+"     if CocAction('hasProvider', 'hover')
+"         call CocActionAsync('doHover')
+"     else
+"         call feedkeys('K', 'in')
+"     endif
+" endfunction
 
 
 
 cnoreabbrev nf saveas %:h/
-
 
 """ set
 " Ignore files when searching
