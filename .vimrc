@@ -12,7 +12,7 @@ if system('uname') =~ 'Linux'
     let g:python3_host_prog="/home/linuxbrew/.linuxbrew/bin/python3"
 elseif system('uname') =~ 'Darwin'
     " Set variable for macOS (Darwin)
-    let g:python3_host_prog="/usr/local/bin/python3"
+    let g:python3_host_prog="/usr/bin/python3"
 else
 endif
 

@@ -1,5 +1,4 @@
 {
-    "rust-analyzer.server.path": "/Users/anthdand/.cargo/bin/rust-analyzer",
     "languageserver": {
         "brazil-config": {
             "command": "barium",
@@ -9,5 +8,5 @@
             "command": "~/lsp/kotlin/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
           }
-    },
+    }
 }

@@ -39,7 +39,7 @@ require("lazy").setup({
         lazy = false,
     },
     { 'https://github.com/sharkdp/fd.git' },
-    {'neoclide/coc.nvim', branch='release'},
+    -- {'neoclide/coc.nvim', branch='release'},
 
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/cmp-buffer'},
@@ -225,4 +225,9 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
     desc = "Search on current file"
 })
 
+vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+
+
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup {
+}
