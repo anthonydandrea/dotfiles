@@ -46,8 +46,12 @@ require("lazy").setup({
     {'hrsh7th/cmp-path'},
     {'hrsh7th/cmp-cmdline'},
     {'hrsh7th/nvim-cmp'},
-    { 'L3MON4D3/LuaSnip'},
-    {'saadparwaiz1/cmp_luasnip'},
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-vsnip' },
+    { 'hrsh7th/vim-vsnip' },
+
+    -- { 'L3MON4D3/LuaSnip'},
+    -- {'saadparwaiz1/cmp_luasnip'},
     { 'tpope/vim-repeat' },
     -- " Docstrings
     -- " https://github.com/danymat/neogen#features"
@@ -104,15 +108,6 @@ require("lazy").setup({
         --     lspconfig.codewhisperer.setup {}
         -- end,
     -- },
-    { 'neovim/nvim-lspconfig' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'hrsh7th/cmp-cmdline' },
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-vsnip' },
-    { 'hrsh7th/vim-vsnip' },
-
     { 'ThePrimeagen/harpoon' },
     { dir = '/apollo/env/envImprovement/vim/amazon/brazil-config' },
     -- { dir = '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimin' }
@@ -155,6 +150,24 @@ mapping = cmp.mapping.preset.insert({
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-e>'] = cmp.mapping.abort(),
   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  ["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			-- elseif luasnip.expand_or_jumpable() then
+			-- 	luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, {"i", "s"}),
+   ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            -- elseif luasnip.jumpable(-1) then
+            --     luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
 }),
 sources = cmp.config.sources({
   { name = 'nvim_lsp' },
@@ -199,10 +212,14 @@ matching = { disallow_symbol_nonprefix_matching = false }
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['nvim_lsp'].setup {
-capabilities = capabilities
-}
+local lspconfig = require('lspconfig')
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    -- on_attach = my_custom_on_attach,
+    capabilities = capabilities,
+  }
+end
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -228,6 +245,6 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
 
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.rust_analyzer.setup {
-}
+-- require'lspconfig'.pyright.setup{}
+-- require'lspconfig'.rust_analyzer.setup {
+-- }
