@@ -109,6 +109,7 @@ require("lazy").setup({
         -- end,
     -- },
     { 'ThePrimeagen/harpoon' },
+    { 'chentoast/marks.nvim' },
     { dir = '/apollo/env/envImprovement/vim/amazon/brazil-config' },
     -- { dir = '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimin' }
 
@@ -213,13 +214,37 @@ matching = { disallow_symbol_nonprefix_matching = false }
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
+
+lspconfig.rust_analyzer.setup {
     capabilities = capabilities,
-  }
-end
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                cfgs = {
+                    target_os = "android"
+                }
+            }
+        },
+    },
+}
+vim.api.nvim_create_user_command(
+  'RAE',
+  function()
+    vim.cmd('edit ~/.config/nvim/init.lua')  -- Replace 'filename' with your actual file name
+    vim.cmd('/lspconfig.rust_analyzer.setup') -- Replace 'search_string' with the text to find
+  end,
+  {}
+)
+
+lspconfig.pyright.setup {
+    capabilities = capabilities,
+}
+lspconfig.tsserver.setup {
+    capabilities = capabilities,
+}
+lspconfig.clangd.setup {
+    capabilities = capabilities,
+}
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -244,7 +269,39 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
-
--- require'lspconfig'.pyright.setup{}
--- require'lspconfig'.rust_analyzer.setup {
--- }
+require'marks'.setup {
+  -- whether to map keybinds or not. default true
+  default_mappings = true,
+  -- which builtin marks to show. default {}
+  builtin_marks = {},
+  -- whether movements cycle back to the beginning/end of buffer. default true
+  cyclic = true,
+  -- whether the shada file is updated after modifying uppercase marks. default false
+  force_write_shada = false,
+  -- how often (in ms) to redraw signs/recompute mark positions. 
+  -- higher values will have better performance but may cause visual lag, 
+  -- while lower values may cause performance penalties. default 150.
+  refresh_interval = 250,
+  -- sign priorities for each type of mark - builtin marks, uppercase marks, lowercase
+  -- marks, and bookmarks.
+  -- can be either a table with all/none of the keys, or a single number, in which case
+  -- the priority applies to all marks.
+  -- default 10.
+  sign_priority = { lower=10, upper=15, builtin=8, bookmark=20 },
+  -- disables mark tracking for specific filetypes. default {}
+  excluded_filetypes = {},
+  -- disables mark tracking for specific buftypes. default {}
+  excluded_buftypes = {},
+  -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
+  -- sign/virttext. Bookmarks can be used to group together positions and quickly move
+  -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
+  -- default virt_text is "".
+  bookmark_0 = {
+    sign = "⚑",
+    virt_text = "hello world",
+    -- explicitly prompt for a virtual line annotation when setting a bookmark from this group.
+    -- defaults to false.
+    annotate = false,
+  },
+  mappings = {}
+}

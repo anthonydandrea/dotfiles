@@ -66,6 +66,7 @@ vnoremap <leader>p "_dP
 
 " leader-w to :w
 nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 
 " leader o to insert new line and stay in normal mode
 nnoremap <Leader>o o<Esc>
@@ -196,23 +197,6 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 """ Misc
 command -nargs=1 Sr vimgrep /<args>/gj `git ls-files`
-
-function! s:ReplaceAll(...)
-if len(a:000) != 2
-    echoerr "RA requires exactly 2 arguments"
-    return
-  endif
-  let arg1 = a:000[0]
-  let arg2 = a:000[1]
-  execute 'Ack ' . arg1
-  sleep 1
-  " This closes the current window brought up by Ack
-  execute 'wincmd c'
-  execute 'Acks /' . arg1 . '/' . arg2 . '/'
-endfunction
-
-command -nargs=* RA call s:ReplaceAll(<f-args>)
-
 
 """ Themeing
 " syntax on
