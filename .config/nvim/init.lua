@@ -220,9 +220,7 @@ lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {
             cargo = {
-                cfgs = {
-                    target_os = "android"
-                }
+                allFeatures = true,
             }
         },
     },
@@ -305,3 +303,9 @@ require'marks'.setup {
   },
   mappings = {}
 }
+
+require("harpoon").setup({
+    menu = {
+        width = vim.api.nvim_win_get_width(0) - 20,
+    }
+})
