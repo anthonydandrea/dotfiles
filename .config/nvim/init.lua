@@ -238,7 +238,7 @@ lspconfig.pyright.setup {
     capabilities = capabilities,
 }
 lspconfig.tsserver.setup {
-    capabilities = capabilities,
+    -- capabilities = capabilities,
 }
 lspconfig.clangd.setup {
     capabilities = capabilities,
@@ -266,6 +266,7 @@ vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search(
 })
 
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 
 require'marks'.setup {
   -- whether to map keybinds or not. default true
