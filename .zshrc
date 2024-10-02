@@ -67,6 +67,7 @@ alias gd="git diff -- . ':(exclude)package-lock.json'"
 alias gds='git diff --staged'
 alias gca='git commit --amend'
 alias gp='git pull'
+alias gacp='git add . && git commit -m "Updates" && git push'
 
 alias ft="find . -name '*' -exec cat {} \; | grep"
 alias python='python3'
