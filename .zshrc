@@ -43,6 +43,7 @@ export EDITOR='nvim'
 alias cd="z"
 alias cdi="zi"
 
+alias rs="ping `route get default | grep gateway | awk '{print $2}'` -i 0.1"
 
 ## Tmux aliases
 alias tmuxk='tmux kill-session -t'
