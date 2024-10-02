@@ -46,19 +46,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-<<<<<<< Updated upstream
-mkdir -p ~/.oh-my-zsh/custom/plugins/
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
-       :exe 'edit '.stdpath('config').'/init.vim'
-=======
-
 mkdir -p ~/.oh-my-zsh/custom/plugins/
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 # install Github cli
 :exe 'edit '.stdpath('config').'/init.vim'
->>>>>>> Stashed changes
 
 
 # install neovim python module for python plugins
