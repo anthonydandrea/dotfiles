@@ -87,6 +87,7 @@ alias server="python3 -m http.server"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
 
 alias rust="evcxr"
+alias big="ls -lSh 2>/dev/null | grep ^- | head -${1:-10}"
 
 export CLOUDSDK_PYTHON=/usr/local/bin/python3
 
@@ -151,3 +152,11 @@ export PATH=$PATH:/Users/anthdand/.toolbox/bin
 # eval "$(mise activate zsh)"
 
 export PATH=$HOME/.toolbox/bin:$PATH
+
+
+export PATH=/Users/anthdand/Library/Python/3.9/bin:$PATH
+# Configuration for virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# source /usr/local/bin/virtualenvwrapper.s
