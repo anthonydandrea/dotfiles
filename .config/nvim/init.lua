@@ -1,4 +1,8 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
         "git",
@@ -27,6 +31,10 @@ require("lazy").setup({
     --     end,
     -- },
     {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+},
+    {
         'rmehri01/onenord.nvim',
         lazy = false,
         priority = 1000,
@@ -35,9 +43,30 @@ require("lazy").setup({
         end,
     },
     {
-        'nvim-treesitter/nvim-treesitter',
-        lazy = false,
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  },
+  keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
     },
+  },
+},
+    {
+        'nvim-tree/nvim-tree.lua',
+    },
+    -- {
+    --     'nvim-treesitter/nvim-treesitter',
+    --     lazy = false,
+    -- },
     { 'https://github.com/sharkdp/fd.git' },
     -- {'neoclide/coc.nvim', branch='release'},
 
@@ -77,7 +106,7 @@ require("lazy").setup({
     -- " Comments
     { 'https://tpope.io/vim/commentary.git' },
     -- " NERDTree
-    { 'preservim/nerdtree' },
+    -- { 'preservim/nerdtree' },
     -- " Smooth scroll
     { 'psliwka/vim-smoothie' },
     -- " Theme
@@ -87,7 +116,7 @@ require("lazy").setup({
     { 'maxmellon/vim-jsx-pretty', lazy = true },
     { 'nvim-lua/plenary.nvim' },
     { 'nvim-pack/nvim-spectre' },
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
+    -- { 'nvim-telescope/telescope.nvim', tag = '0.1.4' },
     { 'junegunn/fzf' },
     { 'junegunn/fzf.vim' },
     -- {
@@ -114,7 +143,7 @@ require("lazy").setup({
     -- { dir = '~/workplace/codewhisperer-nvim/src/AmazonCodeWhispererVimin' }
 
     -- " Tabs
-    -- "  'nvim-tree/nvim-web-devicons'
+     { 'nvim-tree/nvim-web-devicons' },
     -- "  'romgrk/barbar.nvim'
 
     -- " Copilot
@@ -309,4 +338,26 @@ require("harpoon").setup({
     menu = {
         width = vim.api.nvim_win_get_width(0) - 20,
     }
+})
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+
+-- OR setup with some options
+require("nvim-tree").setup({
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
 })
