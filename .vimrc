@@ -167,6 +167,7 @@ endfunc
 
 " Toggle between line numbers and no line numbers
 " https://www.reddit.com/r/neovim/comments/k2bk0o/toggle_linenumbering/
+
 function! ChangeLineNumbering()
     if &number == 0 && &relativenumber == 0
         setlocal number! relativenumber!

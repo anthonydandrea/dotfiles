@@ -16,6 +16,8 @@ brew install gh
 brew install fzf
 brew install zoxide
 brew install --cask font-jetbrains-mono-nerd-font
+brew install luarocks
+
 
 sudo curl -L https://github.com/neovim/neovim/releases/download/v0.9.0/nvim-macos.tar.gz -o /usr/local/nvim-macos.tar.gz
 sudo xattr -c /usr/local/nvim-macos.tar.gz
