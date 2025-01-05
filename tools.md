@@ -1,4 +1,4 @@
 
 # MacOS
 
-Rectangle for window management
+- Rectangle for window management

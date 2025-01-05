@@ -1,3 +1,4 @@
 .attach_pid*
 bd
 build
+.DS_Store
