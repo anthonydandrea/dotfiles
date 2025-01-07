@@ -71,3 +71,4 @@ fi
 
 eval "$(zoxide init zsh)"
 
+clear
