@@ -15,6 +15,7 @@ brew install ripgrep
 brew install gh
 brew install fzf
 brew install zoxide
+brew install just
 brew install --cask font-jetbrains-mono-nerd-font
 brew install luarocks
 
