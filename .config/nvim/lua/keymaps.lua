@@ -29,7 +29,7 @@ map('n', '<leader>r', ':Rg<CR>', {})
 map('n', '<leader>g', ':CWGenerateNvim<CR>', {})
 
 -- copy to system clipboard
-map('i', '<leader>C', '"+y', {})
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
 -- leader p to paste from yank buffer
 map('n', '<leader>p', '"_dP', {})
@@ -59,4 +59,5 @@ map("n", "<leader>n", ":lua ChangeLineNumbering()<CR>", { noremap = true, silent
 -- map('gy', <Plug>(coc-type-definition), { silent = true })
 -- map('gi', <Plug>(coc-implementation), { silent = true })
 -- map('gr', <Plug>(coc-references), { silent = true })
+
 

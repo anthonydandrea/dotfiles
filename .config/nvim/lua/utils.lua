@@ -8,3 +8,5 @@ function ChangeLineNumbering()
         vim.wo.relativenumber = false
     end
 end
+
+

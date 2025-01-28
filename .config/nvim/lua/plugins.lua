@@ -12,11 +12,25 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
+{
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            config = {
+                function()
+                    require('lualine').setup {
+                        sections = {
+                            lualine_x = {'fileformat', 'filetype'},
+                        },
+                        options = {
+                            theme = 'gruvbox', -- Or set a specific theme
+                        },
+                        winbar = {
+                            lualine_a = { require"doing.api".status },
+                        }
+                    }
+                end
+            }
+        },	{
 		"rebelot/kanagawa.nvim",
 	},
 
