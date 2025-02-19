@@ -21,6 +21,7 @@ vim.opt.sw = 4
 vim.opt.expandtab = true
 vim.opt.mouse = a
 vim.opt.so = 999
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
