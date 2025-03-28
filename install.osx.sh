@@ -26,7 +26,7 @@ sudo tar xzvf /usr/local/nvim-macos.tar.gz -C /usr/local/
 sudo ln -s /usr/local/nvim-macos/bin/nvim /usr/local/bin/nvim
 
 mkdir -p ~/.config/nvim
-ln -s ~/Repos/dotfiles/.config/nvim ~/.config/nvim
+ln -s ~/Repos/dotfiles/.config/nvim/ ~/.config/nvim
 ln -s ~/Repos/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Repos/dotfiles/.zshrc ~/.zshrc
 ln -s ~/Repos/dotfiles/.gitignore ~/.gitignore
@@ -63,6 +63,7 @@ pip3 install neovim
 curl https://sh.rustup.rs -sSf | sh
 . "$HOME/.cargo/env"
 cargo install tokei
+cargo install zoxide --locked
 
 curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
