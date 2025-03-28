@@ -62,8 +62,8 @@ alias vc="vim ~/.vimrc"
 alias vim="nvim"
 alias vo="nvim ."
 
-if [ -f '/Users/anthdand/.zshrc.aws' ] || [ -f '/home/anthdand/.zshrc.aws' ]; then
-    source ~/.zshrc.aws
+if [ -f '/Users/anthonydandrea/.zshrc.meta' ]; then
+    source ~/.zshrc.meta
 fi
 if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
     source ~/.zshrc_secret
@@ -77,3 +77,9 @@ clear
 
 export AWS_EC2_METADATA_DISABLED=true
 
+
+# added by setup_fb4a.sh
+export ANDROID_SDK=/opt/android_sdk
+export ANDROID_NDK_REPOSITORY=/opt/android_ndk
+export ANDROID_HOME=${ANDROID_SDK}
+export PATH=${PATH}:${ANDROID_SDK}/emulator:${ANDROID_SDK}/tools:${ANDROID_SDK}/tools/bin:${ANDROID_SDK}/platform-tools
