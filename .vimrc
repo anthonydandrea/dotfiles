@@ -18,8 +18,6 @@ endif
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
-let g:brazil_config_plugin_path = '/apollo/env/envImprovement/vim/amazon/brazil-config'
-
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinSize=80
