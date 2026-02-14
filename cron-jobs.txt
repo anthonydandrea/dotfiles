@@ -1,1 +1,1 @@
-0 * * * * ~/Repos/dotfiles/sync-notes
+0 * * * * ~/Repos/dotfiles/bin/sync-notes
