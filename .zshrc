@@ -23,7 +23,7 @@ export PATH=$HOME/.toolbox/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=/Users/anthonydandrea/Library/Android/sdk/platform-tools/:$PATH
 export PATH=/opt/homebrew/bin:$PATH
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/Users/anthonydandrea/.local/bin/:$PATH
 
 
 function latest_docker_image_id() {
@@ -31,8 +31,6 @@ function latest_docker_image_id() {
 }
 
 alias big="ls -lSh 2>/dev/null | grep ^- | head -${1:-10}"
-alias cd="z"
-alias cdi="zi"
 alias dockerrun='docker run -i -t'
 alias dockerrunlatest='dockerrun $(latest_docker_image_id)'
 alias ft="find . -name '*' -exec cat {} \; | grep"
@@ -69,7 +67,11 @@ if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
     source ~/.zshrc_secret
 fi
 
-eval "$(zoxide init zsh)"
+if [ -z "$DISABLE_ZOXIDE" ]; then
+    alias cd="z"
+    alias cdi="zi"
+    eval "$(zoxide init zsh)"
+fi
 
 clear
 
