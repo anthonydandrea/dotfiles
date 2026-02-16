@@ -73,6 +73,15 @@ if [ -z "$DISABLE_ZOXIDE" ]; then
     eval "$(zoxide init zsh)"
 fi
 
+# Auto-name tmux windows: directory when idle, command when running
+if [ -n "$TMUX" ]; then
+    tmux_precmd() { tmux rename-window "$(basename "$PWD")" }
+    tmux_preexec() { tmux rename-window "$(echo "$1" | awk '{print $1}')" }
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd tmux_precmd
+    add-zsh-hook preexec tmux_preexec
+fi
+
 clear
 
 # if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
