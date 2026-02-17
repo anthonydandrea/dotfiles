@@ -18,6 +18,7 @@ source $ZSH/oh-my-zsh.sh # Must source after plugins declaration
 export EDITOR='nvim'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_COMMAND="rg --files -i"
+export FZF_DEFAULT_OPTS="--bind 'j:down,k:up'"
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$HOME/.toolbox/bin:$PATH
 export PATH=$HOME/bin:$PATH

@@ -1,0 +1,100 @@
+
+""" Let
+let mapleader = " "
+" ctrlp.vim settings
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|build/*|dist/*|node_modules'
+
+" if system('uname') =~ 'Linux'
+"     " Set variable for Linux systems
+"     let g:python3_host_prog="/home/linuxbrew/.linuxbrew/bin/python3"
+" elseif system('uname') =~ 'Darwin'
+"     " Set variable for macOS (Darwin)
+"     let g:python3_host_prog="/usr/bin/python3"
+" else
+" endif
+
+" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+
+" let NERDTreeShowHidden=1
+" let NERDTreeShowLineNumbers=1
+" let g:NERDTreeWinSize=80
+
+" " the configuration options should be placed before `colorscheme miramare`
+" let g:miramare_enable_italic = 1
+" let g:miramare_disable_italic_comment = 1
+
+" let g:current_directory = getcwd()
+
+""" Map
+map <leader>[ :cnext<CR>
+map <leader>] :cprev<CR>
+map <leader>3 :b#<CR>
+map <leader>n :bn<CR>
+map <leader>b :bp<CR>
+map <C-n> <C-b>
+map <C-p> :Files<CR>
+
+
+" copy to system clipboard
+map <leader>C "+y
+
+
+" leader p to paste from yank buffer
+" nnoremap <leader>p "0p
+vnoremap <leader>p "_dP
+
+" leader-w to :w
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+" leader o to insert new line and stay in normal mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
+inoremap jj <ESC>
+" cp to overwrite current word with yanked buffer
+nmap <silent> cp "_cw<C-R>"<Esc>
+"
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Quicker update for reloading from disk changes
+set updatetime=1000
+
+" Formatting
+set ts=4 sw=4 expandtab
+set mouse=a
+set so=999
+set number relativenumber
+set cursorline
+set termguicolors
+set ignorecase
+set smartcase
+
+nmap <leader>n :call ChangeLineNumbering()<CR>
+
+" Toggle between line numbers and no line numbers
+" https://www.reddit.com/r/neovim/comments/k2bk0o/toggle_linenumbering/
+
+function! ChangeLineNumbering()
+    if &number == 0 && &relativenumber == 0
+        setlocal number! relativenumber!
+    else
+        setlocal number! relativenumber!
+    endif
+endfunction
+
+
+""" Autocmd
+
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+" autoformat on save
+" autocmd BufWrite * if @% != 'Config' && @% != 'makefile' | :Autoformat
+" map <leader>F :Autoformat<CR>
