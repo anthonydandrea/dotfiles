@@ -12,8 +12,13 @@ vim.g.miramare_disable_italic_comment = 1
 
 vim.g.fzf_history_dir = '~/.fzf-history'
 
--- Quicker update for reloading from disk changes
+-- Auto-reload files changed outside of NeoVim
+vim.opt.autoread = true
 vim.opt.updatetime = 1000
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})
 
 -- Formatting
 vim.opt.ts = 4
