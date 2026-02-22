@@ -60,6 +60,7 @@ alias tmuxn='tmux new -s'
 alias vc="vim ~/.vimrc"
 alias vim="nvim"
 alias vo="nvim ."
+alias create-backing-track='docker run -e MUSICAI_API_KEY=$MUSICAI_API_KEY -v ~/Music/DrumlessTracks:/root/Music/DrumlessTracks remove-drums-from-yt --out /root/Music/DrumlessTracks --uri'
 
 if [ -f '/Users/anthonydandrea/.zshrc.meta' ]; then
     source ~/.zshrc.meta
@@ -95,3 +96,6 @@ export ANDROID_SDK=/opt/android_sdk
 export ANDROID_NDK_REPOSITORY=/opt/android_ndk
 export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_SDK}/emulator:${ANDROID_SDK}/tools:${ANDROID_SDK}/tools/bin:${ANDROID_SDK}/platform-tools
+
+# OpenClaw Completion
+source "/Users/anthonydandrea/.openclaw/completions/openclaw.zsh"
