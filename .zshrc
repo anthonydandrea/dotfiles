@@ -63,6 +63,7 @@ alias vo="nvim ."
 alias create-backing-track='docker run -e MUSICAI_API_KEY=$MUSICAI_API_KEY -v ~/Music/DrumlessTracks:/root/Music/DrumlessTracks remove-drums-from-yt --out /root/Music/DrumlessTracks --uri'
 
 if [ -f '/Users/anthonydandrea/.zshrc.meta' ]; then
+    export IS_WORK_MACHINE=1
     source ~/.zshrc.meta
 fi
 if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
@@ -134,4 +135,6 @@ export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_SDK}/emulator:${ANDROID_SDK}/tools:${ANDROID_SDK}/tools/bin:${ANDROID_SDK}/platform-tools
 
 # OpenClaw Completion
-source "/Users/anthonydandrea/.openclaw/completions/openclaw.zsh"
+if [ -z "$IS_WORK_MACHINE" ]; then
+    source "/Users/anthonydandrea/.openclaw/completions/openclaw.zsh"
+fi
