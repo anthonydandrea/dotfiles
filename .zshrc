@@ -75,15 +75,51 @@ if [ -z "$DISABLE_ZOXIDE" ]; then
     eval "$(zoxide init zsh)"
 fi
 
-# Auto-name tmux windows: directory when idle, command when running
-if [ -n "$TMUX" ]; then
-    tmux_precmd() { tmux rename-window "$(basename "$PWD")" }
-    tmux_preexec() { tmux rename-window "$(echo "$1" | awk '{print $1}')" }
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd tmux_precmd
-    add-zsh-hook preexec tmux_preexec
-fi
-
+  # Auto-name tmux windows/panes: directory when idle, command when running
+  # When SSH'd, pane title shows "host: activity" so the hostname persists
+  if [ -n "$TMUX" ]; then
+      _tmux_ssh_host=""
+      tmux_precmd() {
+          local name="$(basename "$PWD")"
+          tmux rename-window "$name"
+          if [[ -n "$_tmux_ssh_host" ]]; then
+              # SSH exited — precmd only fires when back at local prompt
+              _tmux_ssh_host=""
+              tmux set-option -p -u @ssh_host
+          fi
+          tmux select-pane -T "$name"
+      }
+      tmux_preexec() {
+          local cmd_name="$(echo "$1" | awk '{print $1}')"
+          tmux rename-window "$cmd_name"
+          if [[ "$cmd_name" == "ssh" || "$cmd_name" == "mosh" ]]; then
+              # Parse destination: skip options and their arguments
+              local host="" skip_next=false
+              for word in ${(z)${1#$cmd_name }}; do
+                  if $skip_next; then skip_next=false; continue; fi
+                  case "$word" in
+                      -[bcDEeFIiJLlmOopQRSWw]) skip_next=true ;;
+                      -*) ;;
+                      *) host="${word##*@}"; break ;;
+                  esac
+              done
+              if [[ -n "$host" ]]; then
+                  _tmux_ssh_host="$host"
+                  tmux select-pane -T "$host"
+                  tmux set-option -p @ssh_host "$host"
+              fi
+          else
+              if [[ -n "$_tmux_ssh_host" ]]; then
+                  tmux select-pane -T "$_tmux_ssh_host: $cmd_name"
+              else
+                  tmux select-pane -T "$cmd_name"
+              fi
+          fi
+      }
+      autoload -Uz add-zsh-hook
+      add-zsh-hook precmd tmux_precmd
+      add-zsh-hook preexec tmux_preexec
+  fi
 clear
 
 # if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
