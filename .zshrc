@@ -62,6 +62,27 @@ alias vim="nvim"
 alias vo="nvim ."
 alias create-backing-track='docker run -e MUSICAI_API_KEY=$MUSICAI_API_KEY -v ~/Music/DrumlessTracks:/root/Music/DrumlessTracks remove-drums-from-yt --out /root/Music/DrumlessTracks --uri'
 
+# Super Claude: Claude Code in a Docker container with full permissions
+SUPERCLAUDE_IMAGE="superclaude"
+function superclaude() {
+    local dockerfile="$HOME/.claude/superquad/Dockerfile"
+    local current_hash=$(md5 -q "$dockerfile" 2>/dev/null || md5sum "$dockerfile" | awk '{print $1}')
+    local image_hash=$(docker image inspect "$SUPERCLAUDE_IMAGE" --format '{{index .Config.Labels "dockerfile.hash"}}' 2>/dev/null)
+    if [[ "$current_hash" != "$image_hash" ]]; then
+        echo "Building Super Claude image..."
+        docker build --label "dockerfile.hash=$current_hash" -t "$SUPERCLAUDE_IMAGE" ~/.claude/superquad/
+    fi
+    local oauth_token
+    oauth_token=$(security find-generic-password -s "Claude Code-credentials" -w 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin)['claudeAiOauth']['accessToken'])" 2>/dev/null)
+    docker run -it --rm \
+        -v "$PWD":/workspace \
+        -v "$HOME/.claude":/home/claude/.claude:ro \
+        -e CLAUDE_CODE_OAUTH_TOKEN="${oauth_token:-}" \
+        "$SUPERCLAUDE_IMAGE" "$@"
+}
+alias sc="superclaude"
+alias c="claude --dangerously-skip-permissions"
+
 if [ -f '/Users/anthonydandrea/.zshrc.meta' ]; then
     export IS_WORK_MACHINE=1
     source ~/.zshrc.meta
