@@ -52,6 +52,36 @@ alias s="source ~/.zshrc && source ~/.zshrc.aws &> /dev/null || true"
 alias save-dots='sd'
 alias sd='pushd ~/Repos/dotfiles/ && git stash && git pull && git stash pop && git add . || true && git commit -m "updates" || true && git push || true && popd'
 alias server="python3 -m http.server"
+
+# serve — http server for a directory, opened in Chrome.
+#   serve             current dir
+#   serve ./docs      relative or absolute dir
+#   serve ~/x 9000    explicit port (otherwise first free from 8000)
+# Foreground; Ctrl-C stops it.
+function serve() {
+    local dir="${1:-.}" port="$2"
+    [ -d "$dir" ] || { echo "not a directory: $dir" >&2; return 1 }
+
+    if [ -z "$port" ]; then
+        port=8000
+        while lsof -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; do
+            ((port++ > 8100)) && { echo "no free port in 8000-8100" >&2; return 1 }
+        done
+    fi
+
+    local url="http://localhost:$port"
+    echo "serving ${dir:A} -> $url"
+
+    # Wait for the bind before opening Chrome so we never hit a dead port.
+    ( local i=0
+      until lsof -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; do
+          ((i++ > 100)) && exit 1
+          sleep 0.1
+      done
+      open -a "Google Chrome" "$url" ) &!
+
+    python3 -m http.server "$port" --directory "$dir"
+}
 alias tmuxa='tmux a'
 alias tmuxd='tmux detach'
 alias tmuxk='tmux kill-session -t'
@@ -83,9 +113,9 @@ function superclaude() {
 alias sc="superclaude"
 alias c="claude --dangerously-skip-permissions"
 
-if [ -f '/Users/anthonydandrea/.zshrc.meta' ]; then
+if [ -f '/Users/anthonydandrea/.zshrc.hark' ]; then
     export IS_WORK_MACHINE=1
-    source ~/.zshrc.meta
+    source ~/.zshrc.hark
 fi
 if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
     source ~/.zshrc_secret
