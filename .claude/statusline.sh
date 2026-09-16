@@ -27,6 +27,7 @@ input=$(cat)
   read -r SESSION
   read -r PR_NUM
   read -r PR_STATE
+  read -r PR_URL
 } <<EOF
 $(printf '%s' "$input" | jq -r '
   def clean: (. // "") | tostring | gsub("[\n\t]"; " ");
@@ -42,7 +43,8 @@ $(printf '%s' "$input" | jq -r '
     ((.worktree.name // .workspace.git_worktree) | clean),
     (.session_name | clean),
     (.pr.number | clean),
-    (.pr.review_state | clean)
+    (.pr.review_state | clean),
+    (.pr.url | clean)
   ] | .[]' 2>/dev/null)
 EOF
 
@@ -54,6 +56,21 @@ else
   CY=$'\033[36m'; GN=$'\033[32m'; YL=$'\033[33m'
   RD=$'\033[31m'; MG=$'\033[35m'; BL=$'\033[34m'
 fi
+
+# OSC 8 hyperlink: ESC ] 8 ; ; URL BEL  text  ESC ] 8 ; ; BEL.
+# Cmd+click in iTerm2/Kitty/WezTerm; tmux forwards it when the client
+# advertises the `hyperlinks` termfeature (tmux ≥ 3.4). A terminal without
+# support swallows the sequence, so the text still reads correctly.
+# hyperlink <url> <text> — emits plain text when linking isn't safe.
+hyperlink() {
+  case "${1:-}" in
+    # Anything that isn't a plain http(s) URL prints as text rather than
+    # getting embedded in an escape sequence.
+    http://*|https://*) [ -n "$R" ] || { printf '%s' "$2"; return; } ;;
+    *) printf '%s' "$2"; return ;;
+  esac
+  printf '\033]8;;%s\007%s\033]8;;\007' "$1" "$2"
+}
 
 COLS=${COLUMNS:-100}
 
@@ -107,7 +124,8 @@ if [ -n "$PR_NUM" ]; then
     draft)             pr_mark="${D}○${R}" ;;
     *)                 pr_mark="" ;;
   esac
-  row1="${row1}   ${BL}PR #${PR_NUM}${R}"
+  pr_text=$(hyperlink "$PR_URL" "PR #${PR_NUM}")
+  row1="${row1}   ${BL}${pr_text}${R}"
   [ -n "$pr_mark" ] && row1="${row1} ${pr_mark}"
 fi
 
