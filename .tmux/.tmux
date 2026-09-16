@@ -1,1 +1,0 @@
-/Users/anthonydandrea/Repos/dotfiles/.tmux
