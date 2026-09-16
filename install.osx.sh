@@ -14,7 +14,7 @@ fi
 export PATH="/opt/homebrew/bin:$PATH"
 
 echo "==> Installing brew packages..."
-brew install neovim node git python3 tldr tmux ripgrep gh fzf zoxide just luarocks
+brew install neovim node git python3 tldr tmux ripgrep gh fzf zoxide just luarocks jq
 brew install --cask font-jetbrains-mono-nerd-font
 brew install font-awesome
 
@@ -69,6 +69,23 @@ link "$DOTFILES/.tmux"           "$HOME/.tmux"
 link "$DOTFILES/.gitignore"      "$HOME/.gitignore"
 link "$DOTFILES/.config/nvim"    "$HOME/.config/nvim"
 link "$DOTFILES/bin"             "$HOME/bin"
+link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
+
+# ─── Claude Code status line ────────────────────────────────────────────────
+
+# Only the script is symlinked above. settings.json stays a real file because
+# Claude Code rewrites it itself (/config, plugin toggles), so the statusLine
+# block is merged in instead — preserving whatever else is already there.
+echo "==> Registering Claude Code status line..."
+CLAUDE_SETTINGS="$HOME/.claude/settings.json"
+mkdir -p "$(dirname "$CLAUDE_SETTINGS")"
+[ -f "$CLAUDE_SETTINGS" ] || echo '{}' > "$CLAUDE_SETTINGS"
+jq '.statusLine = {
+      "type": "command",
+      "command": "~/.claude/statusline.sh",
+      "refreshInterval": 30
+    }' "$CLAUDE_SETTINGS" > "$CLAUDE_SETTINGS.tmp" \
+  && mv "$CLAUDE_SETTINGS.tmp" "$CLAUDE_SETTINGS"
 
 # ─── Git config ──────────────────────────────────────────────────────────────
 
