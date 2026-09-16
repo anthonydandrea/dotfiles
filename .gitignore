@@ -3,3 +3,7 @@ bd
 build
 .DS_Store
 cdk.out
+
+# tmux plugins are cloned by tpm from the @plugin lines in .tmux.conf.
+# Nothing here is tracked; .tmux.conf documents the one-line bootstrap.
+.tmux/plugins/
