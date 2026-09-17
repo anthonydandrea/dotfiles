@@ -189,3 +189,6 @@ export PATH=${PATH}:${ANDROID_SDK}/emulator:${ANDROID_SDK}/tools:${ANDROID_SDK}/
 if [ -z "$IS_WORK_MACHINE" ]; then
     source "/Users/anthonydandrea/.openclaw/completions/openclaw.zsh"
 fi
+
+# add Pulumi to the PATH
+export PATH=$PATH:/Users/anthonydandrea/.pulumi/bin

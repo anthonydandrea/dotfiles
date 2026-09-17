@@ -20,6 +20,10 @@ case $scope in
   *) print -u2 "usage: rename.sh window|session <target>"; exit 2 ;;
 esac
 
+# EDITOR=nvim puts zle in vi insert mode, where backspace stops at the point
+# insert began and so cannot erase the name vared starts with.
+bindkey -e
+
 name=$(tmux display -p -t "$target" "$format")
 vared -p "rename $scope: " name
 [[ -n $name ]] && tmux "$cmd" -t "$target" -- "$name"
