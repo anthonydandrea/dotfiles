@@ -192,9 +192,3 @@ fi
 
 # add Pulumi to the PATH
 export PATH=$PATH:/Users/anthonydandrea/.pulumi/bin
-
-# hark developer tools
-export PATH="/private/tmp/claude-501/-Users-anthonydandrea-Repos-mvp/349ba630-a386-40e8-bfe4-10a6dc560401/scratchpad/it/home/.hark/bin:$PATH"
-
-# hark developer tools
-export PATH="/private/tmp/claude-501/-Users-anthonydandrea-Repos-mvp/349ba630-a386-40e8-bfe4-10a6dc560401/scratchpad/it3/home/.hark/bin:$PATH"
