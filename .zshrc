@@ -192,3 +192,6 @@ fi
 
 # add Pulumi to the PATH
 export PATH=$PATH:/Users/anthonydandrea/.pulumi/bin
+
+# hark developer tools
+export PATH="/Users/anthonydandrea/.hark/bin:$PATH"
