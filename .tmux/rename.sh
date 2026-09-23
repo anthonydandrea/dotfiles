@@ -27,3 +27,5 @@ bindkey -e
 name=$(tmux display -p -t "$target" "$format")
 vared -p "rename $scope: " name
 [[ -n $name ]] && tmux "$cmd" -t "$target" -- "$name"
+# Mark the window so the shell hooks in .zshrc stop auto-renaming it.
+[[ -n $name && $scope == window ]] && tmux set -w -t "$target" @manual_name 1

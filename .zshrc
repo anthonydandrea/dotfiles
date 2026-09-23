@@ -131,9 +131,13 @@ fi
   # When SSH'd, pane title shows "host: activity" so the hostname persists
   if [ -n "$TMUX" ]; then
       _tmux_ssh_host=""
+      # A window renamed by hand (prefix+,) carries @manual_name; leave its name alone.
+      _tmux_auto_rename() {
+          [[ -n "$(tmux show -wv @manual_name 2>/dev/null)" ]] || tmux rename-window "$1"
+      }
       tmux_precmd() {
           local name="$(basename "$PWD")"
-          tmux rename-window "$name"
+          _tmux_auto_rename "$name"
           if [[ -n "$_tmux_ssh_host" ]]; then
               # SSH exited — precmd only fires when back at local prompt
               _tmux_ssh_host=""
@@ -143,7 +147,7 @@ fi
       }
       tmux_preexec() {
           local cmd_name="$(echo "$1" | awk '{print $1}')"
-          tmux rename-window "$cmd_name"
+          _tmux_auto_rename "$cmd_name"
           if [[ "$cmd_name" == "ssh" || "$cmd_name" == "mosh" ]]; then
               # Parse destination: skip options and their arguments
               local host="" skip_next=false
