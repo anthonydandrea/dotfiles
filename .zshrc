@@ -22,9 +22,9 @@ export FZF_DEFAULT_OPTS="--bind 'j:down,k:up'"
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$HOME/.toolbox/bin:$PATH
 export PATH=$HOME/bin:$PATH
-export PATH=/Users/anthonydandrea/Library/Android/sdk/platform-tools/:$PATH
+export PATH=$HOME/Library/Android/sdk/platform-tools/:$PATH
 export PATH=/opt/homebrew/bin:$PATH
-export PATH=/usr/local/bin:/Users/anthonydandrea/.local/bin/:$PATH
+export PATH=/usr/local/bin:$HOME/.local/bin/:$PATH
 
 
 function latest_docker_image_id() {
@@ -113,11 +113,11 @@ function superclaude() {
 alias sc="superclaude"
 alias c="claude --dangerously-skip-permissions"
 
-if [ -f '/Users/anthonydandrea/.zshrc.hark' ]; then
+if [ -f "$HOME/.zshrc.hark" ]; then
     export IS_WORK_MACHINE=1
     source ~/.zshrc.hark
 fi
-if [ -f '/Users/anthonydandrea/.zshrc_secret' ]; then
+if [ -f "$HOME/.zshrc_secret" ]; then
     source ~/.zshrc_secret
 fi
 
@@ -191,11 +191,11 @@ export PATH=${PATH}:${ANDROID_SDK}/emulator:${ANDROID_SDK}/tools:${ANDROID_SDK}/
 
 # OpenClaw Completion
 if [ -z "$IS_WORK_MACHINE" ]; then
-    source "/Users/anthonydandrea/.openclaw/completions/openclaw.zsh"
+    source "$HOME/.openclaw/completions/openclaw.zsh"
 fi
 
 # add Pulumi to the PATH
-export PATH=$PATH:/Users/anthonydandrea/.pulumi/bin
+export PATH=$PATH:$HOME/.pulumi/bin
 
 # hark developer tools
-export PATH="/Users/anthonydandrea/.hark/bin:$PATH"
+export PATH="$HOME/.hark/bin:$PATH"
