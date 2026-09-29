@@ -82,21 +82,6 @@ function serve() {
 
     python3 -m http.server "$port" --directory "$dir"
 }
-# iTerm2 is opaque by default and goes see-through only while tmux runs:
-# attach/new switch to the "Repos Tmux" profile, and exit/detach switch back.
-if [[ "$TERM_PROGRAM" == "iTerm.app" && -z "$TMUX" ]]; then
-  tmux() {
-    case "${1:-new}" in
-      a|at|attach|attach-session|new|new-session) ;;
-      *) command tmux "$@"; return ;;
-    esac
-    printf '\e]1337;SetProfile=Repos Tmux\a'
-    command tmux "$@"
-    local rc=$?
-    printf '\e]1337;SetProfile=Repos Default\a'
-    return $rc
-  }
-fi
 alias tmuxa='tmux a'
 alias tmuxd='tmux detach'
 alias tmuxk='tmux kill-session -t'
