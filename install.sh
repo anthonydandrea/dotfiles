@@ -101,6 +101,9 @@ link "$DOTFILES/.gitignore"      "$HOME/.gitignore"
 link "$DOTFILES/.config/nvim"    "$HOME/.config/nvim"
 link "$DOTFILES/bin"             "$HOME/bin"
 link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
+if [ "$(uname)" = "Darwin" ]; then
+    link "$DOTFILES/iterm/tmux-profile.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/tmux-profile.json"
+fi
 
 # ─── Claude Code status line ────────────────────────────────────────────────
 

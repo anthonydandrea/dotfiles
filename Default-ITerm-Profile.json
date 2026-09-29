@@ -133,7 +133,7 @@
   "Blend" : 0.17648751079172331,
   "Blink Allowed" : false,
   "Blinking Cursor" : true,
-  "Blur" : true,
+  "Blur" : false,
   "Blur Radius" : 7.9560151255745373,
   "BM Growl" : true,
   "Bold Color" : {
@@ -368,7 +368,7 @@
   "Non Ascii Font" : "Menlo-Regular 12",
   "Non-ASCII Anti Aliased" : true,
   "Normal Font" : "Menlo-Regular 16",
-  "Only The Default BG Color Uses Transparency" : false,
+  "Only The Default BG Color Uses Transparency" : true,
   "Option Key Sends" : 2,
   "Prompt Before Closing 2" : false,
   "Right Option Key Sends" : 0,
@@ -397,7 +397,7 @@
 
   ],
   "Terminal Type" : "xterm-256color",
-  "Transparency" : 0.16909373903830338,
+  "Transparency" : 0,
   "Unicode Version" : 9,
   "Unlimited Scrollback" : false,
   "Use Bold Font" : true,

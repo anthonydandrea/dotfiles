@@ -1,0 +1,13 @@
+{
+  "Profiles": [
+    {
+      "Name": "Repos Tmux",
+      "Guid": "7E3C1B2A-9F4D-4B8E-A6C1-2D5F8E0B7A93",
+      "Dynamic Profile Parent Name": "Repos Default",
+      "Transparency": 0.313938710146514,
+      "Blur": true,
+      "Blur Radius": 7.956015125574537,
+      "Only The Default BG Color Uses Transparency": true
+    }
+  ]
+}
