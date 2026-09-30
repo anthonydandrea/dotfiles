@@ -113,6 +113,8 @@ function superclaude() {
 alias sc="superclaude"
 alias c="claude --dangerously-skip-permissions"
 
+[ -d /usr/local/go/bin ] && export PATH="$PATH:/usr/local/go/bin"
+
 if [ -f "$HOME/.zshrc.hark" ]; then
     export IS_WORK_MACHINE=1
     source ~/.zshrc.hark
@@ -199,4 +201,3 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 # hark developer tools
 export PATH="$HOME/.hark/bin:$PATH"
-export PATH="$PATH:$(go env GOPATH)/bin"
