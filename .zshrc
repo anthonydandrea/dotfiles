@@ -44,6 +44,7 @@ alias gp='git pull'
 alias gs='git status'
 alias h="history"
 alias here="pwd | xargs -I {} echo $(whoami)@$(hostname):{}"
+alias oc="opencode"
 alias pd='pushd ~/Repos/dotfiles/ && git pull && source ~/.zshrc && popd'
 alias python='python3'
 alias restart-audio="sudo pkill coreaudiod"
