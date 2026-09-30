@@ -1,1 +1,1 @@
-0 * * * * ~/bin/sync-notes
+0 * * * * $HOME/.local/bin/repo-sync.sh

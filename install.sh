@@ -146,11 +146,12 @@ fi
 
 # ─── Crontab ─────────────────────────────────────────────────────────────────
 
-# The only job syncs ~/Repos/Obsidian, so skip it on machines without the notes.
-if [ -d "$HOME/Repos/Obsidian" ]; then
+# The only job runs repo-sync.sh from hark-dotfiles. macOS runs it from a
+# LaunchAgent instead, since cron there cannot reach the keychain.
+if [ "$OS" = "Linux" ] && [ -e "$HOME/.local/bin/repo-sync.sh" ]; then
     crontab "$DOTFILES/cron-jobs.txt"
 else
-    echo "==> Skipping crontab: ~/Repos/Obsidian not found"
+    echo "==> Skipping crontab: macOS, or ~/.local/bin/repo-sync.sh not linked"
 fi
 
 # ─── Done ────────────────────────────────────────────────────────────────────
