@@ -199,3 +199,4 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 # hark developer tools
 export PATH="$HOME/.hark/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
