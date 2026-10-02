@@ -103,9 +103,8 @@ link "$DOTFILES/bin"             "$HOME/bin"
 link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
 if [ "$(uname)" = "Darwin" ]; then
     link "$DOTFILES/iterm/tmux-profile.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/tmux-profile.json"
-    # iTerm2 loads all its settings from iterm/com.googlecode.iterm2.plist on next launch.
-    defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$DOTFILES/iterm"
-    defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+    # One-time snapshot of iTerm2 settings; iTerm2 must be quit for the import to stick.
+    defaults import com.googlecode.iterm2 "$DOTFILES/iterm/com.googlecode.iterm2.plist"
 fi
 
 # ─── Claude Code status line ────────────────────────────────────────────────
