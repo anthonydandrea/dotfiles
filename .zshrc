@@ -202,3 +202,6 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 # hark developer tools
 export PATH="$HOME/.hark/bin:$PATH"
+
+# opencode
+export PATH=/mnt/hark/hark/.opencode/bin:$PATH
