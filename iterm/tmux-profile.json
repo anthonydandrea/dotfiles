@@ -7,7 +7,8 @@
       "Transparency": 0.313938710146514,
       "Blur": true,
       "Blur Radius": 7.956015125574537,
-      "Only The Default BG Color Uses Transparency": true
+      "Only The Default BG Color Uses Transparency": true,
+      "Mouse Reporting": false
     }
   ]
 }

@@ -1067,7 +1067,7 @@
 				<real>0.19802422821521759</real>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
@@ -2188,7 +2188,7 @@
 				<real>0.19802422821521759</real>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>New Profile</string>
 			<key>Non Ascii Font</key>
@@ -2982,7 +2982,7 @@
 			<key>Minimum Contrast</key>
 			<integer>0</integer>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Repos Default</string>
 			<key>Non Ascii Font</key>
@@ -3734,7 +3734,7 @@
 			<key>Minimum Contrast</key>
 			<integer>0</integer>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Repos Tmux</string>
 			<key>Non Ascii Font</key>

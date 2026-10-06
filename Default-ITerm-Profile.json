@@ -363,7 +363,7 @@
     "Red Component" : 0.19802422821521759
   },
   "Minimum Contrast" : 0,
-  "Mouse Reporting" : true,
+  "Mouse Reporting" : false,
   "Name" : "Repos Default",
   "Non Ascii Font" : "Menlo-Regular 12",
   "Non-ASCII Anti Aliased" : true,
