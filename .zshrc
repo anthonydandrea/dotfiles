@@ -205,5 +205,5 @@ export PATH="$HOME/.hark/bin:$PATH"
 
 # opencode
 export PATH=/mnt/hark/hark/.opencode/bin:$PATH
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="$PATH:$(go env GOPATH)/bin"
