@@ -210,3 +210,15 @@ export PATH="$HOME/.hark/bin:$PATH"
 export PATH=/mnt/hark/hark/.opencode/bin:$PATH
 [ -x /home/linuxbrew/.linuxbrew/bin/brew ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export PATH="$PATH:$(go env GOPATH)/bin"
+
+# ping: wait (retry every 1s) until the host resolves, then run normal ping
+ping() {
+  local host="${@[-1]}"
+  if [[ "$host" != -* && ! "$host" =~ '^[0-9.:]+$' ]]; then
+    until [[ -n "$(dscacheutil -q host -a name "$host" 2>/dev/null)" ]]; do
+      echo "$(date +%T) $host not resolvable, retrying..."
+      sleep 1
+    done
+  fi
+  command ping "$@"
+}
