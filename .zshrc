@@ -114,6 +114,7 @@ function superclaude() {
 alias sc="superclaude"
 # Inline rendering so a Claude Code session lands in tmux scrollback.
 alias claude="claude --settings '{\"tui\":\"default\"}'"
+# Personal default. A company-specific zshrc (e.g. ~/.zshrc.hark) may redefine c.
 alias c="claude --dangerously-skip-permissions"
 
 [ -d /usr/local/go/bin ] && export PATH="$PATH:/usr/local/go/bin"
