@@ -127,7 +127,7 @@ jq '.statusLine = {
 # Hooks that flag this session's tmux window yellow while Claude waits for input.
 echo "==> Registering Claude Code tmux-waiting hooks..."
 jq '.hooks.Stop = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
-  | .hooks.Notification = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
+  | .hooks.Notification = [{"matcher": "permission_prompt|elicitation_dialog|elicitation_url_dialog|idle_prompt", "hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
   | .hooks.UserPromptSubmit = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh clear"}]}]' \
     "$CLAUDE_SETTINGS" > "$CLAUDE_SETTINGS.tmp" \
   && mv "$CLAUDE_SETTINGS.tmp" "$CLAUDE_SETTINGS"
