@@ -101,6 +101,7 @@ link "$DOTFILES/.gitignore"      "$HOME/.gitignore"
 link "$DOTFILES/.config/nvim"    "$HOME/.config/nvim"
 link "$DOTFILES/bin"             "$HOME/bin"
 link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
+link "$DOTFILES/.claude/tmux-waiting.sh" "$HOME/.claude/bin/tmux-waiting.sh"
 if [ "$(uname)" = "Darwin" ]; then
     link "$DOTFILES/iterm/tmux-profile.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/tmux-profile.json"
     # One-time snapshot of iTerm2 settings; iTerm2 must be quit for the import to stick.
@@ -121,6 +122,14 @@ jq '.statusLine = {
       "command": "~/.claude/statusline.sh",
       "refreshInterval": 30
     }' "$CLAUDE_SETTINGS" > "$CLAUDE_SETTINGS.tmp" \
+  && mv "$CLAUDE_SETTINGS.tmp" "$CLAUDE_SETTINGS"
+
+# Hooks that flag this session's tmux window yellow while Claude waits for input.
+echo "==> Registering Claude Code tmux-waiting hooks..."
+jq '.hooks.Stop = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
+  | .hooks.Notification = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
+  | .hooks.UserPromptSubmit = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh clear"}]}]' \
+    "$CLAUDE_SETTINGS" > "$CLAUDE_SETTINGS.tmp" \
   && mv "$CLAUDE_SETTINGS.tmp" "$CLAUDE_SETTINGS"
 
 # ─── Git config ──────────────────────────────────────────────────────────────
