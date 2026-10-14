@@ -80,8 +80,11 @@ echo "==> Creating symlinks..."
 
 link() {
     local src="$1" dest="$2"
-    if [ -L "$dest" ]; then
+    if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
         echo "  Already linked: $dest"
+    elif [ -L "$dest" ]; then
+        ln -sfn "$src" "$dest"
+        echo "  Relinked:       $dest -> $src"
     elif [ -e "$dest" ]; then
         echo "  Backing up:     $dest -> ${dest}.bak"
         mv "$dest" "${dest}.bak"
@@ -101,7 +104,14 @@ link "$DOTFILES/.gitignore"      "$HOME/.gitignore"
 link "$DOTFILES/.config/nvim"    "$HOME/.config/nvim"
 link "$DOTFILES/bin"             "$HOME/bin"
 link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
-link "$DOTFILES/.claude/tmux-waiting.sh" "$HOME/.claude/bin/tmux-waiting.sh"
+# Personal Claude Code config: scripts, skills (slash commands) and hooks.
+# Each entry is linked on its own, since Claude Code keeps its own files
+# beside them in ~/.claude/skills (synced/, .trash/).
+for kind in bin skills hooks; do
+    for f in "$DOTFILES/.claude/$kind"/*; do
+        [ -e "$f" ] && link "$f" "$HOME/.claude/$kind/$(basename "$f")"
+    done
+done
 if [ "$(uname)" = "Darwin" ]; then
     link "$DOTFILES/iterm/tmux-profile.json" "$HOME/Library/Application Support/iTerm2/DynamicProfiles/tmux-profile.json"
     # One-time snapshot of iTerm2 settings; iTerm2 must be quit for the import to stick.
