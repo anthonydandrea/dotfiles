@@ -88,6 +88,9 @@ alias tmuxd='tmux detach'
 alias tmuxk='tmux kill-session -t'
 alias tmuxka='tmux kill-server'
 alias tmuxn='tmux new -s'
+# Bring back the last tmux-resurrect save (windows, panes, directories, Claude
+# conversations) if no server is running, then attach to it.
+alias tmuxr='tmux has-session 2>/dev/null || { tmux new-session -d && tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh; }; tmux attach -t main'
 alias vc="vim ~/.vimrc"
 alias vim="nvim"
 alias vo="nvim ."
