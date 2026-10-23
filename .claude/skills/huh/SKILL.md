@@ -18,13 +18,19 @@ lets them pick it back up. Build it from this session's own conversation
    `gh pr view <n> --repo <owner>/<repo> --json number,title,state,url,isDraft,body`
    Resolve `<owner>/<repo>` from `git remote get-url origin` or from the
    command that produced the number. Run these as separate parallel calls.
-3. Find each PR's Slack post: the `<!-- agent-prs-post: <link> -->` comment in
+3. For each open PR, read its reviews, never the `reviewDecision` field, which
+   GitHub leaves null unless branch protection requires a review:
+   `gh api repos/<owner>/<repo>/pulls/<n>/reviews`
+   Take each reviewer's latest review, ignoring bots and the PR author. The PR
+   is approved when any of those is `APPROVED`. Run these in the same parallel
+   batch as the `gh pr view` calls.
+4. Find each PR's Slack post: the `<!-- agent-prs-post: <link> -->` comment in
    its body, else a post link this conversation recorded. Do not search Slack.
-4. Do nothing else. No new investigation, no fixes, no code changes.
+5. Do nothing else. No new investigation, no fixes, no code changes.
 
 ## Output
 
-Exactly these five sections, in this order. Bullets only, one line each, no
+Exactly these six sections, in this order. Bullets only, one line each, no
 preamble or closing remark.
 
 ```
@@ -32,8 +38,12 @@ preamble or closing remark.
 - [#123](https://github.com/<owner>/<repo>/pull/123) ([#agent-prs](<post link>)) <title>: merged | closed
 - None
 
+**Approved PRs**
+- [#124](https://github.com/<owner>/<repo>/pull/124) ([#agent-prs](<post link>)) <title>: approved by <reviewer>, <reviewer>
+- None
+
 **Open PRs**
-- [#124](https://github.com/<owner>/<repo>/pull/124) (none) <title>: open | draft
+- [#125](https://github.com/<owner>/<repo>/pull/125) (none) <title>: open | draft
 - None
 
 **Working on**
@@ -56,6 +66,10 @@ Rules:
   no post. A PR merged into
   another PR's branch rather than the default branch goes under Closed PRs
   with `merged into #<n>`.
+- Approved PRs are open PRs with at least one human approval, as step 3
+  defines it; they appear only there, not under Open PRs. Name each approver
+  by GitHub login. Open PRs are the rest: unreviewed, changes requested, or
+  draft.
 - Testing lists only what actually ran in this session, with its result. A test
   that was planned but not run goes under Next, or as `not run`.
 - Name specific commands, suites, or environments (`go test ./internal/loop`,
