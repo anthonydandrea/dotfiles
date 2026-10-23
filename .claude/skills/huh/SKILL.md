@@ -15,23 +15,29 @@ lets them pick it back up. Build it from this session's own conversation
    check commands that actually ran (with their result), and stated next steps.
 2. For each PR found, fetch its live state, since it may have changed since it
    was last mentioned:
-   `gh pr view <n> --repo <owner>/<repo> --json number,title,state,url,isDraft`
+   `gh pr view <n> --repo <owner>/<repo> --json number,title,state,url,isDraft,body`
    Resolve `<owner>/<repo>` from `git remote get-url origin` or from the
-   command that produced the number. Run these in parallel.
-3. Do nothing else. No new investigation, no fixes, no code changes.
+   command that produced the number. Run these as separate parallel calls.
+3. Find each PR's Slack post: the `<!-- agent-prs-post: <link> -->` comment in
+   its body, else a post link this conversation recorded. Do not search Slack.
+4. Do nothing else. No new investigation, no fixes, no code changes.
 
 ## Output
 
-Exactly these four sections, in this order. Bullets only, one line each, no
+Exactly these five sections, in this order. Bullets only, one line each, no
 preamble or closing remark.
 
 ```
+**Closed PRs**
+- [#123](https://github.com/<owner>/<repo>/pull/123) ([#agent-prs](<post link>)) <title>: merged | closed
+- None
+
+**Open PRs**
+- [#124](https://github.com/<owner>/<repo>/pull/124) (none) <title>: open | draft
+- None
+
 **Working on**
 <one sentence: the goal and where it stands>
-
-**PRs**
-- [#123](https://github.com/<owner>/<repo>/pull/123) <title>: merged | open | draft | closed
-- None
 
 **Testing**
 - <what ran>: <pass | fail (why) | not run>
@@ -44,7 +50,12 @@ preamble or closing remark.
 
 Rules:
 
-- Every PR is a markdown link, never a bare `#123`. Open PRs first, then merged.
+- Every PR is a markdown link, never a bare `#123`.
+- A PR line is one line: the link, the Slack post, the title, the state. The
+  post shows as `(#<channel>)` linked to the post, or `(none)` when there is
+  no post. A PR merged into
+  another PR's branch rather than the default branch goes under Closed PRs
+  with `merged into #<n>`.
 - Testing lists only what actually ran in this session, with its result. A test
   that was planned but not run goes under Next, or as `not run`.
 - Name specific commands, suites, or environments (`go test ./internal/loop`,
