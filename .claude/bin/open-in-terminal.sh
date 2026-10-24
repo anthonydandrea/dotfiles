@@ -35,10 +35,14 @@ fi
 
 case "$target" in
   tmux)
+    # Target the pane this session runs in ($TMUX_PANE), so the new pane or
+    # window lands beside the requesting Claude session, not in whichever
+    # window the client happens to have active.
+    here="${TMUX_PANE:-}"
     if [ "${CLAUDE_TERM_TMUX_MODE:-pane}" = window ]; then
-      tmux new-window -c "$work" "$script"
+      tmux new-window -a ${here:+-t "$here"} -c "$work" "$script"
     else
-      tmux split-window -h -c "$work" "$script"
+      tmux split-window -h ${here:+-t "$here"} -c "$work" "$script"
     fi
     echo "Opened tmux ${CLAUDE_TERM_TMUX_MODE:-pane}: $cmd"
     ;;
