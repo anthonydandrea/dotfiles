@@ -138,7 +138,7 @@ jq '.statusLine = {
 echo "==> Registering Claude Code tmux-waiting hooks..."
 jq '.hooks.Stop = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
   | .hooks.Notification = [{"matcher": "permission_prompt|elicitation_dialog|elicitation_url_dialog|idle_prompt", "hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh set"}]}]
-  | .hooks.UserPromptSubmit = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh clear"}]}]' \
+  | .hooks.UserPromptSubmit = [{"hooks": [{"type": "command", "command": "~/.claude/bin/tmux-waiting.sh clear"}, {"type": "command", "command": "~/.claude/bin/stamp-worktree-activity.sh"}]}]' \
     "$CLAUDE_SETTINGS" > "$CLAUDE_SETTINGS.tmp" \
   && mv "$CLAUDE_SETTINGS.tmp" "$CLAUDE_SETTINGS"
 
