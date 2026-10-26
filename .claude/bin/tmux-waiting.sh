@@ -17,9 +17,16 @@ case "$1" in
       nohup ~/.claude/bin/tmux-spinner.sh >/dev/null 2>&1 </dev/null &
     fi ;;
   set)
+    payload="$(cat)"
+    # One line per Stop or Notification saying what the payload listed as in
+    # flight, so a window left blue after Claude finished can be traced.
+    log="${TMUX_WAITING_LOG:-$HOME/.claude/logs/tmux-waiting.log}"
+    mkdir -p "$(dirname "$log")"
+    summary="$(printf '%s' "$payload" | jq -c '{event: .hook_event_name, tasks: [.background_tasks[]? | {id, type, status, description: ((.description // "")[0:60])}]}' 2>/dev/null)"
+    printf '%s %s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$TMUX_PANE" "${summary:-unparsable payload (${#payload} bytes)}" >> "$log"
     # A Stop with background agents/shells still running isn't waiting on me:
     # Claude resumes on its own when they finish, so the window stays busy.
-    [ "$(jq '[.background_tasks[]? | select(.status == "running")] | length' 2>/dev/null)" = 0 ] || exit 0
+    [ "$(printf '%s' "$payload" | jq '[.background_tasks[]? | select(.status == "running")] | length' 2>/dev/null)" = 0 ] || exit 0
     tmux set -wu -t "$TMUX_PANE" @claude_busy
     # Skip the yellow if I'm already looking at this window.
     [ "$(tmux display -p -t "$TMUX_PANE" '#{&&:#{window_active},#{session_attached}}')" = 1 ] && exit 0
