@@ -141,8 +141,11 @@ fi
   if [ -n "$TMUX" ]; then
       _tmux_ssh_host=""
       # A window renamed by hand (prefix+,) carries @manual_name; leave its name alone.
+      # Every call names this pane: without -t, a tmux command run from a pane acts
+      # on the session's current window, so a hook firing in a background pane (a
+      # restore resuming every pane at once) would rename whichever window is shown.
       _tmux_auto_rename() {
-          [[ -n "$(tmux show -wv @manual_name 2>/dev/null)" ]] || tmux rename-window "$1"
+          [[ -n "$(tmux show -wv -t "$TMUX_PANE" @manual_name 2>/dev/null)" ]] || tmux rename-window -t "$TMUX_PANE" "$1"
       }
       tmux_precmd() {
           local name="$(basename "$PWD")"
@@ -150,9 +153,9 @@ fi
           if [[ -n "$_tmux_ssh_host" ]]; then
               # SSH exited — precmd only fires when back at local prompt
               _tmux_ssh_host=""
-              tmux set-option -p -u @ssh_host
+              tmux set-option -p -t "$TMUX_PANE" -u @ssh_host
           fi
-          tmux select-pane -T "$name"
+          tmux select-pane -t "$TMUX_PANE" -T "$name"
       }
       tmux_preexec() {
           local cmd_name="$(echo "$1" | awk '{print $1}')"
@@ -170,14 +173,14 @@ fi
               done
               if [[ -n "$host" ]]; then
                   _tmux_ssh_host="$host"
-                  tmux select-pane -T "$host"
-                  tmux set-option -p @ssh_host "$host"
+                  tmux select-pane -t "$TMUX_PANE" -T "$host"
+                  tmux set-option -p -t "$TMUX_PANE" @ssh_host "$host"
               fi
           else
               if [[ -n "$_tmux_ssh_host" ]]; then
-                  tmux select-pane -T "$_tmux_ssh_host: $cmd_name"
+                  tmux select-pane -t "$TMUX_PANE" -T "$_tmux_ssh_host: $cmd_name"
               else
-                  tmux select-pane -T "$cmd_name"
+                  tmux select-pane -t "$TMUX_PANE" -T "$cmd_name"
               fi
           fi
       }
