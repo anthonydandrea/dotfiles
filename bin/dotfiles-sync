@@ -1,0 +1,71 @@
+#!/bin/bash
+# Hourly commit-and-push backup of this dotfiles repo to its GitHub remote.
+# On macOS it runs from the LaunchAgent com.anthonydandrea.dotfiles-sync (the
+# login session can reach keychain credentials; cron cannot). On Linux it runs
+# from cron (see cron-jobs.txt). Both are set up by install.sh.
+set -uo pipefail
+
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+DOTFILES="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/.." && pwd)"
+LABEL="dotfiles-personal"
+if [ "$(uname)" = Darwin ]; then
+  LOG="$HOME/Library/Logs/dotfiles-sync.log"
+else
+  LOG="$HOME/.local/state/dotfiles-sync.log"
+  mkdir -p "$(dirname "$LOG")"
+fi
+LOCK="/tmp/dotfiles-sync.lock"
+
+log() { printf '%s %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" >>"$LOG"; }
+
+# On a hark machine, hark-dotfiles' repo-sync.sh already syncs this repo; leave
+# it to that job so two syncs never run on the same clone.
+HARK_SYNC="$HOME/.local/bin/repo-sync.sh"
+if [ -x "$HARK_SYNC" ] && grep -qF "\$HOME/${DOTFILES#"$HOME"/}:" "$HARK_SYNC"; then
+  exit 0
+fi
+
+# Scheduled runs start at a random point in the next 15 minutes, so they
+# rarely collide with other syncs of this repo (other machines, or hark's
+# repo-sync.sh). Runs from a terminal start right away.
+JITTER_MAX=900
+if [ ! -t 0 ]; then
+  sleep $((RANDOM % JITTER_MAX))
+fi
+
+# Skip this run if the previous one is still going.
+if ! mkdir "$LOCK" 2>/dev/null; then
+  log "skipped: lock held by pid $(cat "$LOCK/pid" 2>/dev/null)"
+  exit 0
+fi
+echo $$ >"$LOCK/pid"
+trap 'rm -rf "$LOCK"' EXIT
+
+cd "$DOTFILES" || { log "error: $DOTFILES missing"; exit 1; }
+
+branch=$(git symbolic-ref --short HEAD 2>/dev/null) || {
+  log "error: detached HEAD, skipping"
+  exit 1
+}
+
+if [ -n "$(git status --porcelain)" ]; then
+  git add -A
+  if ! out=$(git commit -m "$LABEL: $(date '+%Y-%m-%d %H:%M')" 2>&1); then
+    log "error: commit failed: $out"
+    exit 1
+  fi
+  log "committed"
+fi
+
+if ! out=$(git pull --rebase --autostash origin "$branch" 2>&1); then
+  log "error: pull failed: $out"
+  exit 1
+fi
+
+if [ -n "$(git log --oneline "origin/$branch..HEAD")" ]; then
+  if ! out=$(git push origin "$branch" 2>&1); then
+    log "error: push failed: $out"
+    exit 1
+  fi
+  log "pushed $(git rev-parse --short HEAD)"
+fi

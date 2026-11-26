@@ -1,1 +1,4 @@
-0 * * * * $HOME/.local/bin/repo-sync.sh
+# Personal dotfiles sync (skips itself when hark's repo-sync.sh covers this repo).
+0 * * * * $HOME/bin/dotfiles-sync
+# Hark machines: repo-sync.sh from hark-dotfiles (vault, hark-dotfiles, this repo).
+0 * * * * [ -x $HOME/.local/bin/repo-sync.sh ] && $HOME/.local/bin/repo-sync.sh

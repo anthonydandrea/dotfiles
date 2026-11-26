@@ -16,15 +16,16 @@ if [ "$OS" = "Darwin" ]; then
     export PATH="/opt/homebrew/bin:$PATH"
 
     echo "==> Installing brew packages..."
-    brew install neovim node git python3 tldr tmux ripgrep gh fzf zoxide just luarocks jq
+    brew install neovim node git python3 tmux ripgrep gh fzf zoxide just luarocks jq
     brew install --cask font-jetbrains-mono-nerd-font
-    brew install font-awesome
+    brew install --cask font-fontawesome
+    brew install --cask 1password-cli
     # clangd ships with the Xcode command line tools.
     xcode-select -p &>/dev/null || xcode-select --install
 else
     echo "==> Installing apt packages..."
     sudo apt-get update
-    sudo apt-get install -y curl git python3 tldr tmux ripgrep gh fzf zoxide just luarocks jq clangd
+    sudo apt-get install -y curl git python3 tmux ripgrep gh fzf zoxide just luarocks jq clangd
     # Skip if node came from elsewhere (e.g. NodeSource), whose nodejs conflicts with apt's npm.
     command -v npm &>/dev/null || sudo apt-get install -y nodejs npm
 
@@ -109,6 +110,8 @@ link "$DOTFILES/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
 # beside them in ~/.claude/skills (synced/, .trash/).
 for kind in bin skills hooks; do
     for f in "$DOTFILES/.claude/$kind"/*; do
+        # __pycache__ is Python's cache, and hark-dotfiles has one too.
+        [ "$(basename "$f")" = __pycache__ ] && continue
         [ -e "$f" ] && link "$f" "$HOME/.claude/$kind/$(basename "$f")"
     done
 done
@@ -165,14 +168,73 @@ if [ ! -f "$HOME/.zshrc_secret" ]; then
     echo "==> Created ~/.zshrc_secret from template — edit it with your secrets"
 fi
 
-# ─── Crontab ─────────────────────────────────────────────────────────────────
+# ─── Hourly dotfiles sync ────────────────────────────────────────────────────
 
-# The only job runs repo-sync.sh from hark-dotfiles. macOS runs it from a
-# LaunchAgent instead, since cron there cannot reach the keychain.
-if [ "$OS" = "Linux" ] && [ -e "$HOME/.local/bin/repo-sync.sh" ]; then
-    crontab "$DOTFILES/cron-jobs.txt"
+# bin/dotfiles-sync commits, pulls and pushes this repo every hour. macOS runs
+# it from a LaunchAgent, since cron there cannot reach the keychain; Linux
+# installs cron-jobs.txt as the crontab.
+echo "==> Scheduling hourly dotfiles sync..."
+if [ "$OS" = "Darwin" ]; then
+    SYNC_PLIST="$HOME/Library/LaunchAgents/com.anthonydandrea.dotfiles-sync.plist"
+    mkdir -p "$(dirname "$SYNC_PLIST")"
+    # Written rather than symlinked so the paths follow this machine's $HOME.
+    cat > "$SYNC_PLIST" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.anthonydandrea.dotfiles-sync</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>$DOTFILES/bin/dotfiles-sync</string>
+  </array>
+  <!-- Every hour, and once more at login. A run missed while asleep fires on wake. -->
+  <key>StartInterval</key>
+  <integer>3600</integer>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>LowPriorityIO</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>$HOME/Library/Logs/dotfiles-sync.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>$HOME/Library/Logs/dotfiles-sync.stderr.log</string>
+</dict>
+</plist>
+EOF
+    launchctl unload "$SYNC_PLIST" 2>/dev/null || true
+    launchctl load -w "$SYNC_PLIST"
 else
-    echo "==> Skipping crontab: macOS, or ~/.local/bin/repo-sync.sh not linked"
+    crontab "$DOTFILES/cron-jobs.txt"
+fi
+
+# ─── BetterTouchTool license ────────────────────────────────────────────────
+
+# The license lives in 1Password as a document; opening it with BTT registers it.
+if [ "$OS" = "Darwin" ]; then
+    BTT_APP=""
+    for d in /Applications "$HOME/Applications"; do
+        [ -d "$d/BetterTouchTool.app" ] && BTT_APP="$d/BetterTouchTool.app"
+    done
+    if [ -z "$BTT_APP" ]; then
+        echo "==> Skipping BetterTouchTool license: app not installed"
+    elif ! op whoami &>/dev/null; then
+        echo "==> Skipping BetterTouchTool license: 1Password CLI not signed in (run: eval \$(op signin))"
+    else
+        echo "==> Registering BetterTouchTool license..."
+        BTT_TMP="$(mktemp -d)"
+        if op document get "BetterTouchTool license" --out-file "$BTT_TMP/bettertouchtool.bttlicense" >/dev/null; then
+            open -a "$BTT_APP" "$BTT_TMP/bettertouchtool.bttlicense"
+            # Give BTT time to read the file before removing it.
+            sleep 5
+        else
+            echo "  Could not fetch 'BetterTouchTool license' from 1Password"
+        fi
+        rm -rf "$BTT_TMP"
+    fi
 fi
 
 # ─── Done ────────────────────────────────────────────────────────────────────
